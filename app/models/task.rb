@@ -2,6 +2,8 @@ class Task < ApplicationRecord
   include AASM
 
   validates :description, presence: true
+  validates :title, presence: true
+  validates :title, length: {maximum: 140}
   validates :reward_page_id, presence: true
   validates :points, presence: true
 
