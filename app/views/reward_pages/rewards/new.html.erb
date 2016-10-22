@@ -4,7 +4,7 @@
   <%= @reward.errors.full_messages %>
 <% end %>
 
-<%= form_for [current_reward_page, @reward] do |f| %>
+<%= form_for :reward, url: reward_page_rewards_path(current_reward_page.identifier) do |f| %>
   <%= f.text_field :name %>
   <%= f.text_area :description %>
   <%= f.file_field :photo %>
