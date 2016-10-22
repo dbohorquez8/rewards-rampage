@@ -6,3 +6,12 @@
 <br>
 <h2>reward page</h2>
 <%= @reward_page.name %>
+
+<h3>Task</h3>
+
+<% @reward_page.tasks.each do |task| %>
+  <%= render "participants/complete_tasks/task", task: task%>
+<% end %>
+
+
+

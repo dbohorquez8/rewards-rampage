@@ -1,0 +1,30 @@
+<div class="js-participant-task <%= task.status %>" data-task-id="<%= task.id %>">
+  <%= task.description %>
+  <br>
+  <%= task.points %> Points
+
+  <% if task.status == "new" %>
+    <%= form_for(:task,
+      url: participant_task_complete_path(
+            participant_id: current_participant.identifier,
+            task_id: task.id
+          ),
+      remote: true
+      ) do |f| %>
+        <%= f.submit("Complete") %>
+    <% end -%>
+  <% elsif task.status == "completed" %>
+    <%= form_for(:task,
+      url: participant_task_complete_path(
+            participant_id: current_participant.identifier,
+            task_id: task.id
+          ),
+      remote: true,
+      method: :delete
+      ) do |f| %>
+        <%= f.submit("Mark as new") %>
+    <% end -%>
+  <% end -%>
+
+  <hr>
+</div>
