@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
-    description { Faker::Lorem.paragraph }
-    points { Faker::Number.number(4) }
+    description { FFaker::Lorem.paragraph }
+    points { rand(1000).to_i }
   end
 end

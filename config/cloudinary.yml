@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: rewards
+  api_key: '165732538419699'
+  api_secret: q2knSlm7Qp0wnC66ntDaB6kyGOk
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: rewards
+  api_key: '165732538419699'
+  api_secret: q2knSlm7Qp0wnC66ntDaB6kyGOk
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: rewards
+  api_key: '165732538419699'
+  api_secret: q2knSlm7Qp0wnC66ntDaB6kyGOk
+  enhance_image_tag: true
+  static_image_support: false

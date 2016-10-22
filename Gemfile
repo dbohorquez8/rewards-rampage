@@ -38,7 +38,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'ffaker'
 end
 
 group :test do
@@ -60,3 +60,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haikunator'
 gem 'aasm'
+gem 'carrierwave'
+gem 'cloudinary'

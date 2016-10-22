@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20161022183126) do
     t.index ["identifier"], name: "index_reward_pages_on_identifier", unique: true, using: :btree
   end
 
+  create_table "rewards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "photo"
+    t.integer  "points"
+    t.integer  "reward_page_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["reward_page_id"], name: "index_rewards_on_reward_page_id", using: :btree
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.text     "description"
     t.integer  "reward_page_id"
@@ -44,4 +55,5 @@ ActiveRecord::Schema.define(version: 20161022183126) do
     t.datetime "updated_at",     null: false
   end
 
+  add_foreign_key "rewards", "reward_pages"
 end
