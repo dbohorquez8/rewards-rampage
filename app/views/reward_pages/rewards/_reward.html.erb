@@ -1,8 +1,15 @@
-<div class="reward">
-  <%= reward.name %>
-  <br>
-  <img src="<% reward.photo %>">
-  <br>
-  <b><%= reward.points %></b>
-  <hr>
+<div class="col-md-3 col-xs-6">
+  <div class="box bg-color-<%= (index % 5) + 1 %>">
+    <div class="box-img border-color-<%= (index % 5) + 1 %> text-center">
+      <div>
+        <%= image_tag(reward.photo, alt: reward.name, class: "img-responsive") %>
+      </div>
+    </div>
+    <div class="box-info">
+      <h4><%= reward.name %></h4>
+      <div class="price">
+        <span><%= reward.points %> points</span>
+      </div>
+    </div>
+  </div>
 </div>

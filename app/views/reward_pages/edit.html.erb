@@ -1,24 +1,40 @@
-<h1>edit <small><%= current_reward_page.name %></small> </h1>
+<section class="pageTitleSection">
+  <div class="container pageTitleInfo">
+    <h2>Welcome to <%= current_reward_page.name %></h2>
+  </div>
 
-<h2>Task</h2>
+  <div class="container">
 
-<div class="js-tasks-list">
-  <% current_reward_page.tasks.each do |task| %>
-    <%= render "reward_pages/tasks/task", task: task%>
-  <% end %>
-</div>
+    <h3 class="margin-bottom">Tasks</h3>
+    <div class="js-tasks-list">
+      <% current_reward_page.tasks.each_with_index do |task, index| %>
+        <%= render "reward_pages/tasks/task", task: task, index: index %>
+      <% end %>
+    </div>
 
-<%= render "reward_pages/tasks/new" %>
+    <hr>
+    
+    <%= render "reward_pages/tasks/new" %>
+  </div>
 
-<h2>Rewards</h2>
+  <div class="colorSection full-width clearfix bg-color-4 servicesSection">
 
-<div class="js-rewards-list">
-  <% current_reward_page.rewards.each do |reward| %>
-    <%= render "reward_pages/rewards/reward", reward: reward%>
-  <% end %>
-</div>
+    <div class="container">
 
-<%= render "reward_pages/rewards/new" %>
+      <h3 class="margin-bottom">Rewards</h3>
+
+      <div class="js-rewards-list row">
+        <% current_reward_page.rewards.each_with_index do |reward, index| %>
+          <%= render "reward_pages/rewards/reward", reward: reward, index: index %>
+        <% end %>
+      </div>
+
+      <%= render "reward_pages/rewards/new" %>
+
+    </div>
+
+  </div>
+</section>
 
 <h2>Participants</h2>
 

@@ -355,7 +355,7 @@ aside{
 /*=== 2.5 ACCORDION ===*/
 .accordionCommon{
 	.panel{
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		border: none;
 	}
 	.panel-heading{
@@ -367,7 +367,7 @@ aside{
 		font-size: 14px;
 		text-transform: uppercase;
 		position: relative;
-		span.iconBlock{
+		span.iconBlock, span.labelBlock{
 			width: 20px;
 			height: 20px;
 			line-height: 20px;
@@ -383,6 +383,12 @@ aside{
 				box-shadow: none;
 				color: $white-color;
 			}
+		}
+
+		span.labelBlock{
+			margin-right: 5px;
+			padding: 0 5px;
+			width: auto;
 		}
 	}
 	span.separator{
@@ -1024,4 +1030,17 @@ aside{
 
 .indent-bottom {
 	margin-bottom: -40px;
+}
+
+.margin-bottom {
+	margin-bottom: 1em;
+}
+
+.form-control{
+	position: relative;
+	padding-right: 50px;
+	height: 50px;
+	border-width: 3px;
+	@include border-radius(10px);
+	color: #222222;
 }

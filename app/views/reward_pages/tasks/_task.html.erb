@@ -1,7 +1,16 @@
-<div class="task">
-  <p>
-    <%= task.description %>
-  </p>
-  <b><%= task.points %></b>
-  <hr>
+<div class="accordionCommon hello" id="faqAccordion">
+  <div class="panel-group" id="accordionFaq">
+    <div class="panel panel-default">
+      <a class="panel-heading accordion-toggle bg-color-<%= (index % 5) + 1 %>" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-<%= index %>">
+        <span><%= task.description %></span>
+        <span class="iconBlock"><i class="fa fa-chevron-down"></i></span>
+        <span class="labelBlock"><%= task.points %> points</span>
+      </a>                    
+      <div id="collapse-<%= index %>" class="panel-collapse collapse out">
+        <div class="panel-body">
+          <p><%= task.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

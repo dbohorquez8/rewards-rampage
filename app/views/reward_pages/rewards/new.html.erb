@@ -1,7 +1,10 @@
-<h1>new reward</h1>
+<div class="js-reward-form padding-bottom">
+  <p class="h5">Add a Reward</p>
+  
+  <% if @reward.errors.any? %>
+    <%= @reward.errors.full_messages %>
+  <% end %>
+  <%= render "reward_pages/rewards/new" %>
+</div>
 
-<% if @reward.errors.any? %>
-  <%= @reward.errors.full_messages %>
-<% end %>
 
-<%= render "reward_pages/rewards/new" %>
