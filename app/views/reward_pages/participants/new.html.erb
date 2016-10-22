@@ -5,7 +5,11 @@
 <% end %>
 
 <%= form_for [current_reward_page, @participant] do |f| %>
+  name
   <%= f.text_field :name %>
+  <br>
+  email
+  <%= f.text_field :email %>
   <%= hidden_field_tag :id, current_reward_page.identifier %>
 
   <%= f.submit %>

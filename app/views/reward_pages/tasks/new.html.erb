@@ -5,7 +5,10 @@
 <% end %>
 
 <%= form_for [current_reward_page, @task] do |f| %>
+  description
   <%= f.text_area :description %>
+  <br>
+  points
   <%= f.text_field :points, value: 10 %>
 
   <%= hidden_field_tag :id, current_reward_page.identifier %>
