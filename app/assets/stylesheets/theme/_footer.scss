@@ -190,6 +190,10 @@ footer{
 			font-size: 13px;
 			text-align: left;
 			line-height: 28px;
+
+			&.text-right {
+				text-align: right;
+			}
 		}
 	}
 }
