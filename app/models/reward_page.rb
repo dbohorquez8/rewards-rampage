@@ -5,6 +5,8 @@ class RewardPage < ApplicationRecord
 
   before_validation :generate_identifier, on: :create
 
+  has_many :tasks, dependent: :destroy
+
   private
 
   def generate_identifier

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022152932) do
+ActiveRecord::Schema.define(version: 20161022160412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20161022152932) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["identifier"], name: "index_reward_pages_on_identifier", unique: true, using: :btree
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "reward_page_id"
+    t.string   "status"
+    t.integer  "points"
+    t.integer  "participant_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
