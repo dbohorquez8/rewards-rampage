@@ -223,6 +223,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
   factory_girl_rails
