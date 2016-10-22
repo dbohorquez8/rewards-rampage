@@ -5,6 +5,6 @@ class RewardPagesController < ApplicationController
   end
 
   def edit
-    @reward_page = RewardPage.find_by!(identifier: params[:id])
+    current_reward_page
   end
 end
