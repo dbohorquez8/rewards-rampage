@@ -21,7 +21,7 @@ RSpec.describe Participants::CompleteTasksController, type: :controller do
     end
 
     it "should mark the task a completed" do
-      process :create, method: :post, params: {participant_id: @participant.identifier, task_id: @task.id}
+      process :create, method: :post, params: {participant_id: @participant.identifier, task_id: @task.id}, format: :js
       expect(@task.reload.status).to eq('completed')
     end
   end
@@ -46,8 +46,8 @@ RSpec.describe Participants::CompleteTasksController, type: :controller do
     end
 
     it "should mark the task a new" do
-      process :create, method: :post, params: {participant_id: @participant.identifier, task_id: @task.id}
-      process :destroy, method: :delete, params: {participant_id: @participant.identifier, task_id: @task.id}
+      process :create, method: :post, params: {participant_id: @participant.identifier, task_id: @task.id}, format: :js
+      process :destroy, method: :delete, params: {participant_id: @participant.identifier, task_id: @task.id}, format: :js
       expect(@task.reload.status).to eq('new')
     end
   end
