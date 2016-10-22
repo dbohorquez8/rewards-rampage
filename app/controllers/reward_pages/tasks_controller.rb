@@ -5,10 +5,15 @@ class RewardPages::TasksController < ApplicationController
 
   def create
     @task = current_reward_page.tasks.build(task_params)
-    if @task.save
-      redirect_to reward_page_path(id: current_reward_page.identifier)
-    else
-      render "new"
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to reward_page_path(current_reward_page.identifier) }
+        format.js { }
+      else
+        format.html { render action: "new" }
+        format.js { }
+      end
     end
   end
 

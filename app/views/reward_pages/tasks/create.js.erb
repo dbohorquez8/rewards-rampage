@@ -1,0 +1,10 @@
+(function(){
+  <% if @task.persisted? %>
+    var reward_html = $("<%= j(render('reward_pages/tasks/task', task: @task)) %>");
+    $('.js-tasks-list').append(reward_html.hide());
+    reward_html.toggle( "highlight" );
+    $('.js-task-form form')[0].reset();
+  <% else %>
+    $('.js-task-form').effect( 'shake' );
+  <% end %>
+})();

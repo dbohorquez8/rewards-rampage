@@ -1,0 +1,12 @@
+<div class="js-reward-form">
+  <%= form_for :task, url: reward_page_tasks_path(current_reward_page.identifier), remote: true do |f| %>
+    description
+    <%= f.text_area :description %>
+    <br>
+    points
+    <%= f.text_field :points, value: 10 %>
+
+    <%= hidden_field_tag :id, current_reward_page.identifier %>
+    <%= f.submit %>
+  <% end -%>
+</div>
