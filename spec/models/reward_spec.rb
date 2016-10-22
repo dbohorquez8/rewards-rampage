@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RewardPage, type: :model do
+RSpec.describe Reward, type: :model do
   let(:reward) { FactoryGirl.build(:reward) }
 
   subject { reward }
@@ -24,4 +24,18 @@ RSpec.describe RewardPage, type: :model do
   it { should belong_to(:reward_page) }
 
   it { should be_valid }
+end
+
+RSpec.describe Reward, "methods" do
+  describe "is_redeemed?" do
+    it "returns true if status is redeemed" do
+      reward = FactoryGirl.create(:reward, status: "redeemed")
+      expect(reward.is_redeemed?).to be_truthy
+    end
+
+    it "returns true if participant_id is not nil" do
+      reward = FactoryGirl.create(:reward, status: "", participant_id: 1)
+      expect(reward.is_redeemed?).to be_truthy
+    end
+  end
 end

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :tasks, only: [] do
       resource :complete, only: [:create, :destroy], controller: "participants/complete_tasks"
     end
-    resources :redeem_prize, only: [:create], controller: "participants/redeem_awards"
+    resources :rewards, only: [] do
+      resources :redeem, only: [:create], controller: "participants/redeem_rewards"
+    end
   end
 
   root to: "pages#index"

@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
 
   # returns the current participant
   def current_participant
-    @current_participant ||= Participant.find_by!(identifier: params[:id] || params[:participant_id])
+    @current_participant ||= Participant.find_by!(identifier: params[:participant_id] || params[:id])
   end
 end
