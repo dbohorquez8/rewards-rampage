@@ -1,0 +1,10 @@
+(function(){
+  <% if @participant.persisted? %>
+    var reward_html = $("<%= j(render('reward_pages/participants/participant', participant: @participant)) %>");
+    $('.js-participants-list').append(reward_html.hide());
+    reward_html.toggle( "highlight" );
+    $('.js-participant-form form')[0].reset();
+  <% else %>
+    $('.js-participant-form').effect( 'shake' );
+  <% end %>
+})();

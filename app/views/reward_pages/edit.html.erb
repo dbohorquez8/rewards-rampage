@@ -19,3 +19,13 @@
 </div>
 
 <%= render "reward_pages/rewards/new" %>
+
+<h2>Participants</h2>
+
+<div class="js-participants-list">
+  <% current_reward_page.participants.each do |participant| %>
+    <%= render "reward_pages/participants/participant", participant: participant%>
+  <% end %>
+</div>
+
+<%= render "reward_pages/participants/new" %>
