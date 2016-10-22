@@ -4,13 +4,4 @@
   <%= @reward.errors.full_messages %>
 <% end %>
 
-<%= form_for :reward, url: reward_page_rewards_path(current_reward_page.identifier) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_area :description %>
-  <%= f.file_field :photo %>
-  <%= f.hidden_field :photo_cache %>
-  <%= f.text_field :points, value: 100 %>
-
-  <%= hidden_field_tag :id, current_reward_page.identifier %>
-  <%= f.submit %>
-<% end -%>
+<%= render "reward_pages/rewards/new" %>

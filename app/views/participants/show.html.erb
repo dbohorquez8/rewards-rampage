@@ -5,6 +5,14 @@
 
 <br>
 <h2>reward page</h2>
+
+<h3>rewards</h3>
+<% @reward_page.rewards.each do |reward| %>
+  <%= render "reward_pages/rewards/reward", reward: reward%>
+<% end %>
+
+
+
 <%= @reward_page.name %>
 
 <h3>Task</h3>

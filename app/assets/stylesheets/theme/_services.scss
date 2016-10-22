@@ -64,6 +64,17 @@
 	}
 }
 .servicesContent{
+	&.alignRight{
+		.media-left{
+			float: right;
+			margin: 0 0 0 20px;
+		}
+		>.media-body{
+			h3, p{
+				text-align: right;
+			}
+		}
+	}
 	.media-body{
 		@include tablet {
 			display: block;

@@ -4,13 +4,4 @@
   <%= @task.errors.full_messages %>
 <% end %>
 
-<%= form_for :task, url: reward_page_tasks_path(current_reward_page.identifier) do |f| %>
-  description
-  <%= f.text_area :description %>
-  <br>
-  points
-  <%= f.text_field :points, value: 10 %>
-
-  <%= hidden_field_tag :id, current_reward_page.identifier %>
-  <%= f.submit %>
-<% end -%>
+<%= render "reward_pages/tasks/new" %>
