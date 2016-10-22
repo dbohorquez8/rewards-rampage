@@ -11,6 +11,7 @@ RSpec.describe RewardPage, type: :model do
     expect(reward_page).to be_valid
     expect(reward_page.identifier).not_to be_nil
   end
+
   it "should validate uniqueness of name" do
     reward_page = RewardPage.new(name: "something")
     reward_page.save
