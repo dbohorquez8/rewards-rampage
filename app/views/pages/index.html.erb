@@ -1,30 +1,74 @@
-<h1>Welcome Page</h1>
+<!-- BANNER -->
+<section class="pageTitleSection">
+  <div class="container pageTitleInfo padding-bottom">
+    <div class="col-xs-12">
 
-<p>Create rewards programs and get tasks done.</p>
-<p>Use it with:</p>
-<ul>
-  <li>
-    <span>Your family</span>
-    <p>Teach your kids the meaning of work.
-      Teach them how to be responsible.
-      Teach them how to earn things.</p>
-  </li>
-  <li>
-    <span>Coworkers</span>
-    <p>
-      Get help with your tasks, and give them a reward for it.
-    </p>
-  </li>
-  <li>
-    <span>Employees</span>
-    <p>Motivate your employees, create small hackatons and fix issues within
-      your organization</p>
+      <h2 class="text-center">
+        Create <span class="color-3">rewards</span> programs and get tasks <span class="color-3">done</span>
+      </h2>
 
-  </li>
-</ul>
+      <p>It is easy and it is free! (No Signup Required)</p>
 
-<%= link_to("Get Started", new_reward_page_path) %>
-<br>
-<small>It is easy and it is free!</small>
-<br>
-<small>(No Signup Required)</small>
+      <p class="text-center">
+        <%= link_to("Get Started", new_reward_page_path, class: "btn btn-primary") %>
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="clearfix linkSection hidden-xs indent-bottom">
+  <div class="sectionLinkArea hidden-xs scrolling">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="sectionLink bg-color-1" id="coursesLink">
+            <i class="fa fa-child linkIcon border-color-1" aria-hidden="true"></i>
+            <span class="linkText">Family</span>
+            <ul>
+              <li>Teach your kids the meaning of work</li>
+              <li>Teach them how to be responsible</li>
+              <li>Teach them how to earn things</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="sectionLink bg-color-2" id="teamLink">
+            <i class="fa fa-suitcase linkIcon border-color-2" aria-hidden="true"></i>
+            <span class="linkText">Coworkers</span>
+            <ul>
+              <li>Get help with your tasks</li>
+              <li>Give rewards for their work</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="sectionLink bg-color-3" id="galleryLink">
+            <i class="fa fa-users linkIcon border-color-3" aria-hidden="true"></i>
+            <span class="linkText">Employees</span>
+            <ul>
+              <li>Motivate your employees</li>
+              <li>Create small hackatons</li>
+              <li>Fix issues within your organization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="colorSection full-width clearfix bg-color-4 servicesSection">
+  <div class="container">
+    <!-- <div class="sectionTitle text-center alt">
+      <h2>
+        <span class="shape shape-left bg-color-3"></span>
+        <span>How It Works</span>
+        <span class="shape shape-right bg-color-3"></span>
+      </h2>
+    </div> -->
+
+    
+  </div>
+</section>

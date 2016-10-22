@@ -200,13 +200,14 @@
 		color: $text-color;
 	}
 	.linkText{
-		line-height: 190px;
 		display: block;
 		font-family: 'Dosis', sans-serif;
 		font-size: 32px;
 		font-weight: 400;
 		color: $white-color;
 		letter-spacing: 1px;
+		padding-top: 65px;
+		margin-bottom: 0.5em;
 	}
 	.locateArrow{
 		font-size: 18px;

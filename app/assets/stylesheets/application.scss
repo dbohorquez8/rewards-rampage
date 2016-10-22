@@ -11,5 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require 'theme/style'
+ *= require theme/style
+ *= require font-awesome
  */
+
+ @import "bootstrap";
