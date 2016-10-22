@@ -1,12 +1,17 @@
 <div class="js-reward-form">
   <%= form_for :participant, url: reward_page_participants_path(current_reward_page.identifier), remote: true do |f| %>
-    name
-    <%= f.text_field :name %>
-    <br>
-    email
-    <%= f.text_field :email %>
-    <%= hidden_field_tag :id, current_reward_page.identifier %>
+    <p>Add a Participant</p>
+    <div class="row">
+      <div class="form-group col-sm-6 col-xs-12">
+        <%= f.text_field :name, class: "form-control border-color-2", placeholder: "Participant name" %>
+      </div>
 
-    <%= f.submit %>
+      <div class="form-group col-sm-6 col-xs-12">
+        <%= f.text_field :email, class: "form-control border-color-4", placeholder: "Email" %>
+      </div>
+    </div>
+
+    <%= hidden_field_tag :id, current_reward_page.identifier %>
+    <%= f.submit class: "btn btn-primary pull-right", value: "Add Participant" %>
   <% end -%>
 </div>

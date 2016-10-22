@@ -1,8 +1,7 @@
-<div class="participant">
-  <%= participant.name %>
-  <br>
-  <b><%= participant.email %></b>
-  <br>
-  <b><%= participant_url(participant.identifier) %></b>
-  <hr>
+<div class="col-xs-12 col-sm-6">
+  <div class="island media courseList couresListPage">
+    <h3 class="media-heading"><%= participant.name %></h3>  
+    <p><i class="fa fa-envelope"></i> <%= participant.email %></p>
+    <div class="label bg-color-<%= (index % 5) + 1 %>"><strong>Participant Link:</strong> <%= participant_url(participant.identifier) %></div>
+  </div>
 </div>

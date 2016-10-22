@@ -29,19 +29,26 @@
         <% end %>
       </div>
 
+      <hr>
+
       <%= render "reward_pages/rewards/new" %>
 
     </div>
 
   </div>
+
+  <div class="container padding-top">
+
+    <h3 class="margin-bottom">Participants</h3>
+
+    <div class="js-participants-list row">
+      <% current_reward_page.participants.each_with_index do |participant, index| %>
+        <%= render "reward_pages/participants/participant", participant: participant, index: index %>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <%= render "reward_pages/participants/new" %>
+  </div>
 </section>
-
-<h2>Participants</h2>
-
-<div class="js-participants-list">
-  <% current_reward_page.participants.each do |participant| %>
-    <%= render "reward_pages/participants/participant", participant: participant%>
-  <% end %>
-</div>
-
-<%= render "reward_pages/participants/new" %>
