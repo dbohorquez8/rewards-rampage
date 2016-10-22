@@ -1,0 +1,12 @@
+<h1>new participant</h1>
+
+<% if @participant.errors.any? %>
+  <%= @participant.errors.full_messages %>
+<% end %>
+
+<%= form_for [current_reward_page, @participant] do |f| %>
+  <%= f.text_field :name %>
+  <%= hidden_field_tag :id, current_reward_page.identifier %>
+
+  <%= f.submit %>
+<% end -%>
