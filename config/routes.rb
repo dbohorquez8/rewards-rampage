@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :reward_pages, only: [:new]
   resources :reward_pages, except: [:new, :create, :index, :destroy], path: "s" do
     resources :tasks, only: [:new, :create, :destroy], controller: "reward_pages/tasks"
+    resources :participants, only: [:new, :create, :destroy], controller: "reward_pages/participants"
   end
 
 

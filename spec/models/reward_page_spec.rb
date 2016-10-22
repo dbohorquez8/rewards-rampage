@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RewardPage, type: :model do
   it { should have_many(:tasks).dependent(:destroy) }
+  it { should have_many(:participants).dependent(:destroy) }
 
   it { should validate_presence_of(:name) }
 
