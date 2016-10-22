@@ -1,5 +1,15 @@
 <h1>SHOW <small><%= current_reward_page.name %></small> </h1>
 
-edita
+<%= link_to("Boton Edit", edit_reward_page_path(current_reward_page.identifier)) %>
 
-<%= link_to("edit", edit_reward_page_path(current_reward_page.identifier)) %>
+
+<h2>Tasks</h2>
+<% current_reward_page.tasks.each do |task| %>
+  <%= render "reward_pages/tasks/task", task: task%>
+<% end %>
+
+<h2>Rewards</h2>
+
+<% current_reward_page.rewards.each do |reward| %>
+  <%= render "reward_pages/rewards/reward", reward: reward%>
+<% end %>

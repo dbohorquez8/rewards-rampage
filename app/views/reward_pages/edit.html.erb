@@ -1,3 +1,31 @@
 <h1>edit <small><%= current_reward_page.name %></small> </h1>
 
-ay papi!!!
+<h2>Task</h2>
+
+<div class="js-tasks-list">
+  <% current_reward_page.tasks.each do |task| %>
+    <%= render "reward_pages/tasks/task", task: task%>
+  <% end %>
+</div>
+
+<%= render "reward_pages/tasks/new" %>
+
+<h2>Rewards</h2>
+
+<div class="js-rewards-list">
+  <% current_reward_page.rewards.each do |reward| %>
+    <%= render "reward_pages/rewards/reward", reward: reward%>
+  <% end %>
+</div>
+
+<%= render "reward_pages/rewards/new" %>
+
+<h2>Participants</h2>
+
+<div class="js-participants-list">
+  <% current_reward_page.participants.each do |participant| %>
+    <%= render "reward_pages/participants/participant", participant: participant%>
+  <% end %>
+</div>
+
+<%= render "reward_pages/participants/new" %>
