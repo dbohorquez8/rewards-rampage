@@ -1,6 +1,5 @@
 module RewardPages
   class RewardsController < ApplicationController
-
     def index
       @rewards = current_reward_page.rewards
     end
@@ -11,10 +10,15 @@ module RewardPages
 
     def create
       @reward = current_reward_page.rewards.build(reward_params)
-      if @reward.save
-        redirect_to reward_page_path(id: current_reward_page.identifier)
-      else
-        render "new"
+
+      respond_to do |format|
+        if @reward.save
+          format.html { redirect_to reward_page_path(current_reward_page.identifier) }
+          format.js { }
+        else
+          format.html { render action: "new" }
+          format.js { }
+        end
       end
     end
 
