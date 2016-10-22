@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :participants, only: [:new, :create, :destroy], controller: "reward_pages/participants"
   end
 
+  resources :participants, only: [:show], path: "p" do
+    resources :complete_tasks, only: [:create, :destroy], controller: "participants/complete_tasks"
+    resources :redeem_prize, only: [:create], controller: "participants/redeem_awards"
+  end
 
   root to: "pages#index"
 end
