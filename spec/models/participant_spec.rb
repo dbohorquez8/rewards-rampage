@@ -21,6 +21,23 @@ RSpec.describe Participant, type: :model do
 end
 
 describe "methods" do
+  describe "can_redeem?" do
+    before(:each) do
+      @reward_page = FactoryGirl.create(:reward_page)
+      @participant = FactoryGirl.create(:participant, reward_page_id: @reward_page.id, points: 100)
+    end
+
+    it "should return true if the number of points is equal or higher" do
+      reward = @reward_page.rewards.create(FactoryGirl.attributes_for(:reward, points: "100"))
+      expect(@participant.can_redeem?(reward)).to be_truthy
+    end
+
+    it "should return false if the number of points is lower" do
+      reward = @reward_page.rewards.create(FactoryGirl.attributes_for(:reward, points: "1002"))
+      expect(@participant.can_redeem?(reward)).to be_falsey
+    end
+  end
+
   describe "redeem_reward!" do
     before(:each) do
       @reward_page = FactoryGirl.create(:reward_page)

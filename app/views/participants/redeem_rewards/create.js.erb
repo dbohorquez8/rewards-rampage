@@ -1,0 +1,4 @@
+(function(){
+  var reward_html = "<%= j(render('participants/redeem_rewards/reward', reward: @reward)) %>";
+  $('[data-reward-id=<%= @reward.id %>]').html(reward_html);
+})();

@@ -1,0 +1,19 @@
+<div class="reward" data-reward-id="<%= reward.id %>">
+  <%= reward.name %>
+  <br>
+  <b><%= reward.points %></b>
+
+  <% if current_participant.can_redeem?(reward) && !reward.is_redeemed? %>
+    <%= form_for(:reward,
+      url: participant_reward_redeem_index_path(
+            participant_id: current_participant.identifier,
+            reward_id: reward.id
+          ),
+      remote: true
+      ) do |f| %>
+        <%= f.submit("Redeem") %>
+    <% end -%>
+  <% end -%>
+
+  <hr>
+</div>

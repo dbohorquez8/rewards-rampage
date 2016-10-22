@@ -18,4 +18,9 @@ class Participant < ApplicationRecord
       self.save
     end
   end
+
+  # returns wether or not the user can reedem that reward
+  def can_redeem?(reward)
+    self.points.to_i >= reward.points.to_i
+  end
 end
