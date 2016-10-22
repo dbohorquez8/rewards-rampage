@@ -1,0 +1,4 @@
+(function(){
+  var task_html = "<%= j(render('participants/complete_tasks/task', task: @task)) %>";
+  $('[data-task-id=<%= @task.id %>]').html(task_html);
+})();
