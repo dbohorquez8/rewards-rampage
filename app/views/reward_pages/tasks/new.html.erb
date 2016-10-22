@@ -1,0 +1,13 @@
+<h1>new task</h1>
+
+<% if @task.errors.any? %>
+  <%= @task.errors.full_messages %>
+<% end %>
+
+<%= form_for [current_reward_page, @task] do |f| %>
+  <%= f.text_area :description %>
+  <%= f.text_field :points, value: 10 %>
+
+  <%= hidden_field_tag :id, current_reward_page.identifier %>
+  <%= f.submit %>
+<% end -%>
