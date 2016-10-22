@@ -1,10 +1,21 @@
-<div class="js-reward-form">
-  <%= form_for :reward, url: reward_page_rewards_path(current_reward_page.identifier), remote: true do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_area :description %>
-    <%= f.text_field :points, value: 100 %>
+<%= form_for :reward, url: reward_page_rewards_path(current_reward_page.identifier), remote: true do |f| %>
+  <p class="h5">Add a Reward</p>
+  <div class="row">
+    <div class="form-group col-sm-10 col-xs-12">
+      <%= f.text_field :name, class: "form-control border-color-1", placeholder: "Reward name" %>
+    </div>
 
-    <%= hidden_field_tag :id, current_reward_page.identifier %>
-    <%= f.submit %>
-  <% end -%>
-</div>
+    <div class="form-group col-sm-2 col-xs-12">
+      <%= f.text_field :points, class: "form-control border-color-3", placeholder: "Points" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-12">
+      <%= f.text_area :description, class: "form-control border-color-2", placeholder: "Description" %>
+    </div>
+  </div>
+
+  <%= hidden_field_tag :id, current_reward_page.identifier %>
+  <%= f.submit class: "btn btn-primary pull-right", value: "Add Reward" %>
+<% end -%>

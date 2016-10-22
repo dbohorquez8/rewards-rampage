@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022183126) do
+ActiveRecord::Schema.define(version: 20161022224106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161022183126) do
     t.string   "email"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "points"
     t.index ["identifier"], name: "index_participants_on_identifier", using: :btree
     t.index ["reward_page_id"], name: "index_participants_on_reward_page_id", using: :btree
   end
@@ -42,7 +43,11 @@ ActiveRecord::Schema.define(version: 20161022183126) do
     t.integer  "reward_page_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "status"
+    t.integer  "participant_id"
+    t.index ["participant_id"], name: "index_rewards_on_participant_id", using: :btree
     t.index ["reward_page_id"], name: "index_rewards_on_reward_page_id", using: :btree
+    t.index ["status"], name: "index_rewards_on_status", using: :btree
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -53,6 +58,7 @@ ActiveRecord::Schema.define(version: 20161022183126) do
     t.integer  "participant_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "title"
   end
 
   add_foreign_key "rewards", "reward_pages"
