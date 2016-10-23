@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '404', to: 'errors#e_404', as: :no_way_baby
+
   root to: "pages#index"
   get '/signature', to: 'pages#signature'
+  get '*path', to: 'errors#you_should_not_be_here'
 end
