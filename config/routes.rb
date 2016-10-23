@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   root to: "pages#index"
+  get '/signature', to: 'pages#signature'
 end

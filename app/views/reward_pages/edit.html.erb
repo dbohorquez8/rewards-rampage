@@ -67,7 +67,7 @@
   <script type="text/javascript">
     var generateSignature = function(callback, params_to_sign){
       $.ajax({
-        url     : '/gen_signature',
+        url     : '/signature',
         type    : "GET",
         dataType: "text",
         data    : { data: params_to_sign},
@@ -88,7 +88,8 @@
         cropping: 'server',
         theme: 'white',
         button_class: 'btn-primary btn bg-color-5',
-        thumbnails: ".js-thumbnails"
+        thumbnails: ".js-thumbnails",
+        upload_signature: generateSignature
       }, function(error, result) {
         if (error == null) {
           if ($('.cloudinary-thumbnails').length > 1) {
