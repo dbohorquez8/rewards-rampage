@@ -1,9 +1,14 @@
 <section class="pageTitleSection">
   <div class="container">
     <div class="row">
+      <%= link_to("Create a reward program", new_reward_page_path, class: "btn btn-primary btn-small pull-right") %>
+    </div>
 
+    <div class="row  padding-top">
       <div class="col-sm-6 col-xs-12">
-        <h3 class="margin-bottom">Rewards I've Created</h3>
+        <h3 class="margin-bottom">
+          Rewards I've Created
+        </h3>
         <% owner_pages_from_cookies.each_with_index do |reward_page, index| %>
           <div class="accordionCommon hello" id="faqAccordion">
             <div class="panel-group" id="accordionFaq">
