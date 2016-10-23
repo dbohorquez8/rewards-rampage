@@ -4,8 +4,11 @@
     <p><i class="fa fa-envelope"></i> <%= participant.email %></p>
     <div class="label bg-color-<%= (index % 5) + 1 %>"><strong>Participant Link:</strong> <%= participant_url(participant.identifier) %></div>
 	  <% if editable? %>
-	  <div>
-	    <%= link_to 'Destroy', reward_page_participant_path(current_reward_page.identifier, participant.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+	  <div class="margin-top">
+	    <%= link_to reward_page_participant_path(current_reward_page.identifier, participant.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash"></i>
+        <span>Remove Participant</span>
+      <% end %>
 	  </div>
 	  <% end %>
   </div>

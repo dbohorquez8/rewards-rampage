@@ -9,13 +9,16 @@
       <div id="collapse-<%= task.id %>" class="panel-collapse collapse out">
         <div class="panel-body">
           <p><%= task.description %></p>
+          <% if editable? %>
+          <div class="pull-right">
+            <%= link_to reward_page_task_path(current_reward_page.identifier, task.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash"></i>
+              <span>Delete Task</span>
+            <% end %>
+          </div>
+          <% end %>
         </div>
       </div>
-      <% if editable? %>
-      <div>
-        <%= link_to 'Destroy', reward_page_task_path(current_reward_page.identifier, task.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

@@ -19,7 +19,10 @@
       </div>
       <% if editable? %>
       <div>
-        <%= link_to 'Destroy', reward_page_reward_path(current_reward_page.identifier, reward.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+        <%= link_to reward_page_reward_path(current_reward_page.identifier, reward.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "color-white" do %>
+          <i class="fa fa-trash"></i>
+          <span>Delete Reward</span>
+        <% end %>
       </div>
       <% end %>
     </div>
