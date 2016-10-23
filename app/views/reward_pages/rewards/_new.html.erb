@@ -17,16 +17,18 @@
       </div>
     </div>
 
-  <div class="row">
-    <div class="form-group col-xs-12">
-      <%= f.hidden_field :photo %>
-      <button id="upload_widget_opener"></button>
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <%= f.hidden_field :photo %>
+        <button id="upload_widget_opener"></button>
+      </div>
     </div>
-  </div>
 
-  <%= hidden_field_tag :id, current_reward_page.identifier %>
-  <%= f.submit class: "btn btn-primary pull-right", value: "Add Reward" %>
-<% end -%>
+    <%= hidden_field_tag :id, current_reward_page.identifier %>
+    <%= f.submit class: "btn btn-primary pull-right", value: "Add Reward" %>
+  <% end -%>
+</div>
+
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "https://widget.cloudinary.com/global/all.js" %>
   <script>cloudinary.setCloudName('rewards');</script>
