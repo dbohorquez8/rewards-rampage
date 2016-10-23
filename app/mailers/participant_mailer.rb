@@ -1,5 +1,5 @@
 class ParticipantMailer < ApplicationMailer
-  default :from => 'no-reply@example.com'
+  default :from => 'no-reply@rewards.com'
 
   def welcome(participant)
     @participant = participant
