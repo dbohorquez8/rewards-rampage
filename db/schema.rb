@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022224106) do
+ActiveRecord::Schema.define(version: 20161023032427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 20161022224106) do
   create_table "reward_pages", force: :cascade do |t|
     t.string   "name"
     t.string   "identifier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "owner_email"
     t.index ["identifier"], name: "index_reward_pages_on_identifier", unique: true, using: :btree
   end
 
