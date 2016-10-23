@@ -55,7 +55,7 @@
       <small style="visibility:hidden;" data-intro="The available rewards" data-position="right">oh, I am a hack!!! :D</small>
     </h3>
     <div class="row">
-      <% @reward_page.rewards.each_with_index do |reward, index| %>
+      <% @reward_page.rewards.not_redeemed.each_with_index do |reward, index| %>
         <%= render "participants/redeem_rewards/reward", reward: reward, index: index %>
       <% end %>
     </div>
@@ -67,7 +67,7 @@
       <small style="visibility:hidden;" data-intro="The list of tasks that you can do" data-position="right">oh, I am a hack!!! :D</small>
     </h3>
     <div>
-      <% @reward_page.tasks.each do |task| %>
+      <% @reward_page.tasks.to_do.each do |task| %>
         <%= render "participants/complete_tasks/task", task: task %>
       <% end %>
     </div>

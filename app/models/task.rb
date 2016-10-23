@@ -12,6 +12,7 @@ class Task < ApplicationRecord
 
   scope :pending_approval, -> { where("status = ?", 'completed') }
   scope :not_pending_approval, -> { where("status not in (?)", ['completed', 'approved']) }
+  scope :to_do, -> { where("status in (?)", ['new_task']) }
 
   aasm column: 'status' do
     state :new_task, :initial => true
