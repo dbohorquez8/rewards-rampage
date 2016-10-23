@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+  def cookie_has_data?(key)
+    begin
+      !JSON.parse(cookies[key]).empty?
+    rescue TypeError => e
+      false
+    end
+  end
+
+  def is_owner_or_participating?
+    cookie_has_data?(:owner) || cookie_has_data?(:participant)
+  end
+
   def owner_pages_from_cookies
     begin
       RewardPage.where('identifier in (?)', JSON.parse(cookies[:owner]))
