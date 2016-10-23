@@ -16,7 +16,24 @@
   <% end -%>
 
   <div class="container pageTitleInfo">
-    <h2 class="pull-left">Welcome to <%= current_reward_page.name %></h2>
+    <div class="js-reward-name-title">
+      <div class="js-title">
+        <h2 class="pull-left">
+          Welcome to <%= current_reward_page.name %>
+          <small class="js-edit-name-btn" style="cursor:pointer;"><i class="fa fa-pencil border-color-2" aria-hidden="true"></i></small>
+        </h2>
+      </div>
+      <div class="js-edit-title pull-left" style="display:none">
+        <%= form_for current_reward_page, url: reward_page_change_name_path(current_reward_page.identifier), method: :put do |f| %>
+          <div class="form-group col-sm-6 col-xs-6">
+            <%= f.text_field :name, class: "form-control border-color-4", placeholder: "Name" %>
+          </div>
+          <%= f.submit class: "btn btn-primary", value: "Save" %>
+        <% end -%>
+      </div>
+    </div>
+
+
     <%= link_to(reward_page_path(current_reward_page.identifier), class: "btn btn-primary pull-right") do %>
       <i class="fa fa-eye"></i>
       <span>Preview</span>
@@ -84,6 +101,24 @@
 
 
 <% content_for :javascript_includes do %>
+  <script type="text/javascript">
+    function showTitleEdit(){
+      $('.js-title').hide();
+      $('.js-edit-title').show();
+    }
+
+    function hideTitleEdit(){
+      $('.js-title').show();
+      $('.js-edit-title').hide();
+    }
+
+    $(document).ready(function(){
+      $('.js-reward-name-title').on('click', ".js-edit-name-btn", function(){
+        showTitleEdit();
+      });
+    });
+  </script>
+
   <%= javascript_include_tag "https://widget.cloudinary.com/global/all.js" %>
   <script>cloudinary.setCloudName('rewards');</script>
   <script type="text/javascript">
