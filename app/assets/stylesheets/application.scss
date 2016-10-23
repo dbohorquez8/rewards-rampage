@@ -87,3 +87,21 @@ html, body {
   color: #DDD;
   font-size: 132px !important;
 }
+
+.navbar-default .navbar-brand {
+  width: auto !important;
+  line-height: 35px;
+}
+
+.pageTitleSection .pageTitleInfo h2 {
+  line-height: 1.2em !important;
+}
+
+@media (min-width: 768px){
+  .servicesContent .media-body {
+    max-width: 100% !important;
+    float: none !important;
+    overflow: hidden;
+    width: auto !important;
+  }
+}
