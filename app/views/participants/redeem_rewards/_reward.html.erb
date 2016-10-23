@@ -9,7 +9,10 @@
       <div class="box-info">
         <h4><%= reward.name %></h4>
         <div class="price">
-          <span><%= reward.points %> points</span>
+          <span>
+            <i class="fa fa-ticket"></i>
+            <%= reward.points %> <small>points</small>
+          </span>
         </div>
         <% if current_participant.can_redeem?(reward) && !reward.is_redeemed? %>
           <%= form_for(:reward,
