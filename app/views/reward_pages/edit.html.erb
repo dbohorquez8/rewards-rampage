@@ -5,12 +5,14 @@
 
   <% if current_reward_page.tasks.pending_approval.any? %>
     <div class="container">
-      <h3 class="margin-bottom">Pending Approval Tasks</h3>
+      <h3 class="margin-bottom">Tasks Waiting for Approval</h3>
       <div class="js-pending-tasks-list">
         <% current_reward_page.tasks.pending_approval.each_with_index do |task, index| %>
           <%= render "reward_pages/tasks/pending_approval_task", task: task, index: index %>
         <% end %>
       </div>
+
+      <hr>
     </div>
   <% end -%>
 

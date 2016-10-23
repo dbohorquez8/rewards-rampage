@@ -1,4 +1,4 @@
 (function(){
-  var reward_html = "<%= j(render('participants/redeem_rewards/reward', reward: @reward)) %>";
+  var reward_html = "<%= j(render('participants/redeem_rewards/reward', reward: @reward, index: @reward.id % 5 + 1)) %>";
   $('[data-reward-id=<%= @reward.id %>]').html(reward_html);
 })();
