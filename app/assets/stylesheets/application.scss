@@ -88,11 +88,6 @@ html, body {
   font-size: 132px !important;
 }
 
-.navbar-default .navbar-brand {
-  width: auto !important;
-  line-height: 35px;
-}
-
 .pageTitleSection .pageTitleInfo h2 {
   line-height: 1.2em !important;
 }
@@ -104,4 +99,17 @@ html, body {
     overflow: hidden;
     width: auto !important;
   }
+}
+
+.navbar-brand {
+  float: none !important;
+  text-align: center;
+  display: block;
+  width: 100% !important;
+  line-height: 70px !important;
+  padding: 0 !important;
+}
+
+.navbar-default.lightHeader {
+  height: 70px !important;
 }
