@@ -3,7 +3,11 @@
     <div class="box bg-color-<%= (index % 5) + 1 %>">
       <div class="box-img border-color-<%= (index % 5) + 1 %> text-center">
         <div>
-          <%= image_tag(reward.photo, alt: reward.name, class: "img-responsive") %>
+          <% if reward.photo.present? %>
+            <%= image_tag(reward.photo, alt: reward.name, class: "img-responsive") %>
+          <% else %>
+            <i class="fa fa-trophy placeholder-reward"></i>
+          <% end -%>
         </div>
       </div>
       <div class="box-info">
