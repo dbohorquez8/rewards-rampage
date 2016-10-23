@@ -20,7 +20,7 @@
   <div class="row">
     <div class="form-group col-xs-12">
       <%= f.hidden_field :photo %>
-      <div id="upload_widget_opener"></div>
+      <button id="upload_widget_opener"></button>
     </div>
   </div>
 
@@ -50,7 +50,8 @@
       multiple: false,
       max_files: 1,
       cropping: 'server',
-      theme: 'white'
+      theme: 'white',
+      button_class: 'btn-primary btn bg-color-5'
     }, function(error, result) {
       if (error == null) {
         if ($('.cloudinary-thumbnails').length > 1) {

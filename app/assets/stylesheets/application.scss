@@ -13,6 +13,13 @@
  *= require_self
  *= require theme/style
  *= require font-awesome
- */
+*/
 
- @import "bootstrap";
+@import "bootstrap";
+
+.cloudinary-thumbnails {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px !important;
+  height: 48px;
+}
