@@ -9,17 +9,20 @@ class Task < ApplicationRecord
 
   belongs_to :reward_page
 
+  scope :pending_approval, -> { where("status = ?", 'completed') }
+  scope :not_pending_approval, -> { where("status not in (?)", ['completed', 'approved']) }
+
   aasm column: 'status' do
-    state :new, :initial => true
+    state :new_task, :initial => true
     state :completed
     state :approved
 
     event :complete do
-      transitions :from => :new, :to => :completed
+      transitions :from => [:new_task, :new], :to => :completed
     end
 
     event :undo do
-      transitions :from => :completed, :to => :new
+      transitions :from => :completed, :to => :new_task
     end
 
     event :approve do
@@ -27,7 +30,7 @@ class Task < ApplicationRecord
     end
 
     event :reject do
-      transitions :from => :completed, :to => :new
+      transitions :from => :completed, :to => :new_task
     end
   end
 end
