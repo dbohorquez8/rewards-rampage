@@ -7,4 +7,9 @@ class RewardPagesController < ApplicationController
   def edit
     current_reward_page
   end
+
+  def change_email
+    @reward = current_reward_page
+    @reward.update_attributes(params.require(:reward_page).permit(:owner_email))
+  end
 end

@@ -16,7 +16,7 @@ class Task < ApplicationRecord
   aasm column: 'status' do
     state :new_task, :initial => true
     state :completed, :after => :notify_owner_of_reward_page
-    state :approved
+    state :approved, :after => :notify_participant_of_approved_task
 
     event :complete do
       transitions :from => [:new_task, :new], :to => :completed
@@ -45,10 +45,16 @@ class Task < ApplicationRecord
     return true
   end
 
-  private
-
   # if the owner of this task has email, we will notify him
   def notify_owner_of_reward_page
+    Rails.logger.info("I will schedule the Email job notify_owner_of_reward_page")
     reward_page.notify_owner_of_task_completion!(self)
+    return true
+  end
+
+  def notify_participant_of_approved_task
+    Rails.logger.info("I will schedule the Email job notify_participant_of_approved_task")
+    participant.notify_of_approved_task!(self) unless self.participant_id.nil?
+    return true
   end
 end

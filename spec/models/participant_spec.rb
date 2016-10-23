@@ -18,6 +18,19 @@ RSpec.describe Participant, type: :model do
     participant.save
     expect(Participant.new(name: "something", identifier: participant.identifier).valid?).to be_falsey
   end
+
+  it "should validate email format" do
+    participant = FactoryGirl.build(:participant, email: "something")
+    participant.valid?
+    expect(participant.errors[:email].size).to eq(1)
+  end
+
+  it "should allow nil value" do
+    participant = FactoryGirl.build(:participant, email: nil)
+    participant.valid?
+    expect(participant.errors[:email].size).to eq(0)
+  end
+
 end
 
 describe "methods" do
