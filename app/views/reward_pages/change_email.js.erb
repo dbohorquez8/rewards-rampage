@@ -1,0 +1,7 @@
+(function(){
+  <% if @reward.owner_email.present? && @reward.persisted? && @reward.valid? %>
+    $('.js-email-notification').fadeOut();
+  <% else %>
+    $('.js-email-notification').effect( 'shake' );
+  <% end %>
+})();

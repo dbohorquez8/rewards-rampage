@@ -4,6 +4,7 @@ class Participant < ApplicationRecord
   belongs_to :reward_page
   validates :name, presence: true
   validates :name, uniqueness: {scope: :reward_page_id}
+  validates :email, format: {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}, allow_nil: true
 
   def complete_task!(task)
     Task.transaction do
@@ -38,5 +39,11 @@ class Participant < ApplicationRecord
   # returns wether or not the user can reedem that reward
   def can_redeem?(reward)
     self.points.to_i >= reward.points.to_i
+  end
+
+  # this will send an email to the participant. It will be about how he now
+  # earned X amount of points.
+  def notify_of_approved_task!(task)
+    ParticipantMailer.points_awarded_to_you(self, task).deliver_later
   end
 end
