@@ -1,10 +1,13 @@
 (function(){
   <% if @participant.persisted? %>
-    var reward_html = $("<%= j(render('reward_pages/participants/participant', participant: @participant)) %>");
+    var reward_html = $("<%= j(render('reward_pages/participants/participant', participant: @participant, index: @participant.id % 5 + 1)) %>");
     $('.js-participants-list').append(reward_html.hide());
     reward_html.toggle( "highlight" );
     $('.js-participant-form form')[0].reset();
   <% else %>
+    var new_form = $("<%= j(render('reward_pages/participants/new', participant: @participant)) %>");
+    $('.js-participants-list-form').html(new_form.html());
+
     $('.js-participant-form').effect( 'shake' );
   <% end %>
 })();
