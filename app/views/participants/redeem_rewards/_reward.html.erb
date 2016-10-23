@@ -1,19 +1,28 @@
-<div class="reward" data-reward-id="<%= reward.id %>">
-  <%= reward.name %>
-  <br>
-  <b><%= reward.points %></b>
-
-  <% if current_participant.can_redeem?(reward) && !reward.is_redeemed? %>
-    <%= form_for(:reward,
-      url: participant_reward_redeem_index_path(
-            participant_id: current_participant.identifier,
-            reward_id: reward.id
-          ),
-      remote: true
-      ) do |f| %>
-        <%= f.submit("Redeem") %>
-    <% end -%>
-  <% end -%>
-
-  <hr>
+<div class="col-md-3 col-xs-6">
+  <div class="reward" data-reward-id="<%= reward.id %>">
+    <div class="box bg-color-<%= (index % 5) + 1 %>">
+      <div class="box-img border-color-<%= (index % 5) + 1 %> text-center">
+        <div>
+          <%= image_tag(reward.photo, alt: reward.name, class: "img-responsive") %>
+        </div>
+      </div>
+      <div class="box-info">
+        <h4><%= reward.name %></h4>
+        <div class="price">
+          <span><%= reward.points %> points</span>
+        </div>
+        <% if current_participant.can_redeem?(reward) && !reward.is_redeemed? %>
+          <%= form_for(:reward,
+            url: participant_reward_redeem_index_path(
+                  participant_id: current_participant.identifier,
+                  reward_id: reward.id
+                ),
+            remote: true
+            ) do |f| %>
+              <%= f.submit("Redeem", class: "btn btn-primary") %>
+          <% end -%>
+        <% end -%>
+      </div>
+    </div>
+  </div>
 </div>
