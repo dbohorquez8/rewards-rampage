@@ -38,7 +38,7 @@ class Task < ApplicationRecord
   # gives the participant his points
   def award_points!
     Task.transaction do
-      participant.points += self.points
+      participant.points = participant.points.to_i + self.points.to_i
       participant.save
       self.approve!
     end
