@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
 
     resources :participants, only: [:new, :create, :destroy], controller: "reward_pages/participants"
-    resources :rewards, only: [:index, :new, :create, :destroy], controller: "reward_pages/rewards"
+    resources :rewards, only: [:new, :create, :destroy], controller: "reward_pages/rewards"
   end
 
   resources :participants, only: [:show], path: "p" do

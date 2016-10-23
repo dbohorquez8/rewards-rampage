@@ -1,4 +1,4 @@
-<div class="col-md-3 col-xs-6">
+<div class="col-md-3 col-xs-6" data-reward-id="<%= reward.id %>">
   <div class="box bg-color-<%= (index % 5) + 1 %>">
     <div class="box-img border-color-<%= (index % 5) + 1 %> text-center">
       <div>
@@ -17,6 +17,11 @@
           <%= reward.points %> <small>points</small>
         </span>
       </div>
+      <% if editable? %>
+      <div>
+        <%= link_to 'Destroy', reward_page_reward_path(current_reward_page.identifier, reward.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,9 +1,5 @@
 module RewardPages
   class RewardsController < ApplicationController
-    def index
-      @rewards = current_reward_page.rewards
-    end
-
     def new
       @reward = current_reward_page.rewards.build
     end
@@ -25,7 +21,7 @@ module RewardPages
     def destroy
       @reward = current_reward_page.rewards.find(reward_id_param)
       @reward.destroy
-      redirect_to reward_page_path(id: current_reward_page.identifier)
+      redirect_to reward_page_path(id: current_reward_page.identifier) unless request.xhr?
     end
 
     private

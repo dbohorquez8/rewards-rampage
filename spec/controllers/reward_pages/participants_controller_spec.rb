@@ -29,4 +29,30 @@ RSpec.describe RewardPages::ParticipantsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    let(:reward_page) { FactoryGirl.create(:reward_page) }
+    let(:participant) { FactoryGirl.create(:participant, reward_page: reward_page) }
+    let(:process_request) {
+      delete :destroy, params: {reward_page_id: reward_page.identifier, id: participant.id}
+    }
+
+    it { participant; expect{ process_request }.to change(Participant, :count) }
+
+    context "with valid attributes" do
+      before(:each) do
+        process_request
+      end
+
+      it { expect(response).to redirect_to(reward_page_path(reward_page.identifier)) }
+    end
+
+    context "ajax enabled" do
+      before(:each) do
+        delete :destroy, params: {reward_page_id: reward_page.identifier, id: participant.id}, xhr: true
+      end
+
+      it { expect(response).not_to be_a_redirect }
+      it { expect(response).to render_template('reward_pages/participants/destroy') }
+    end
+  end
 end

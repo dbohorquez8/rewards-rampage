@@ -17,7 +17,17 @@ class RewardPages::ParticipantsController < ApplicationController
     end
   end
 
+  def destroy
+    @participant = current_reward_page.participants.find(participant_id_param)
+    @participant.destroy
+    redirect_to reward_page_path(id: current_reward_page.identifier) unless request.xhr?
+  end
+
   private
+
+  def participant_id_param
+    params.require(:id)
+  end
 
   def participant_params
     params.require(:participant).permit(:name, :email)

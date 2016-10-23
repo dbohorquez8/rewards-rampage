@@ -1,4 +1,4 @@
-<div class="accordionCommon hello" id="faqAccordion">
+<div class="accordionCommon hello" id="faqAccordion" data-task-id="<%= task.id %>">
   <div class="panel-group" id="accordionFaq">
     <div class="panel panel-default">
       <a class="panel-heading accordion-toggle bg-color-<%= (index % 5) + 1 %>" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-<%= task.id %>">
@@ -11,6 +11,11 @@
           <p><%= task.description %></p>
         </div>
       </div>
+      <% if editable? %>
+      <div>
+        <%= link_to 'Destroy', reward_page_task_path(current_reward_page.identifier, task.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -5,13 +5,6 @@ RSpec.describe RewardPages::RewardsController, type: :controller do
   it { expect(new_reward_page_reward_path(1)).to eq('/s/1/rewards/new') }
   it { expect(reward_page_reward_path(1,2)).to eq('/s/1/rewards/2') }
   it {
-    expect(get: reward_page_rewards_path(1)).to route_to({
-      controller:     'reward_pages/rewards',
-      action:         'index',
-      reward_page_id: '1'
-    })
-  }
-  it {
     expect(get: new_reward_page_reward_path(1)).to route_to({
       controller:     'reward_pages/rewards',
       action:         'new',
@@ -35,24 +28,6 @@ RSpec.describe RewardPages::RewardsController, type: :controller do
   }
 
   let(:reward_page) { FactoryGirl.create(:reward_page) }
-
-  describe "GET #index" do
-    let(:rewards) { [
-        FactoryGirl.create(:reward, reward_page: reward_page),
-        FactoryGirl.create(:reward, reward_page: reward_page),
-        FactoryGirl.create(:reward, reward_page: reward_page)
-      ]
-    }
-
-    context "default response" do
-      before(:each) do
-        rewards
-        get :index, params: {reward_page_id: reward_page.identifier}
-      end
-
-      it { expect(response).to have_http_status(200) }
-    end
-  end
 
   describe "POST #create" do
     let(:params) {
@@ -111,6 +86,15 @@ RSpec.describe RewardPages::RewardsController, type: :controller do
       end
 
       it { expect(response).to redirect_to(reward_page_path(reward_page.identifier)) }
+    end
+
+    context "ajax enabled" do
+      before(:each) do
+        delete :destroy, params: {reward_page_id: reward_page.identifier, id: reward.id}, xhr: true
+      end
+
+      it { expect(response).not_to be_a_redirect }
+      it { expect(response).to render_template('reward_pages/rewards/destroy') }
     end
   end
 end
