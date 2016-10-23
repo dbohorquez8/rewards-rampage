@@ -22,5 +22,7 @@ module Rampage2016
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.action_mailer.default_url_options = { host: 'rewards.2016.rubyrampage.com' }
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

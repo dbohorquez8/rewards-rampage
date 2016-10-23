@@ -6,9 +6,9 @@ class RewardPage < ApplicationRecord
   has_many :participants, dependent: :destroy
   has_many :rewards, dependent: :destroy
 
-  private
-
-  def generate_identifier
-    self.identifier = SecureRandom.hex(16) unless self.identifier
+  def notify_owner_of_task_completion!(task)
+    if owner_email.present?
+      OwnerMailer.task_completed(self, task).deliver_later
+    end
   end
 end
