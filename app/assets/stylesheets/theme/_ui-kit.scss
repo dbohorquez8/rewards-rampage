@@ -41,14 +41,14 @@ aside{
 		width: 100% !important;
 	}
 }
-.btn-primary.active.focus, 
-.btn-primary.active:focus, 
-.btn-primary.active:hover, 
-.btn-primary:active.focus, 
-.btn-primary:active:focus, 
-.btn-primary:active:hover, 
-.open>.dropdown-toggle.btn-primary.focus, 
-.open>.dropdown-toggle.btn-primary:focus, 
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.open>.dropdown-toggle.btn-primary.focus,
+.open>.dropdown-toggle.btn-primary:focus,
 .open>.dropdown-toggle.btn-primary:hover{
 	border: none;
 	background-color: $color3;
@@ -127,7 +127,7 @@ aside{
 .sectionTitleSmall{
 	margin-bottom: 40px;
 	h2{
-		text-align: center; 
+		text-align: center;
 		font-family: 'Dosis', sans-serif;
 		text-transform: capitalize;
 		margin: 0 0 12px 0;
@@ -140,7 +140,7 @@ aside{
 	}
 }
 .pageTitleSection{
-	background-image: url("../img/page-title/page-title-bg.jpg");
+	/*background-image: url("../img/page-title/page-title-bg.jpg");*/
 	width: 100%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -506,7 +506,7 @@ aside{
 	}
 	&.tabLeft{
 		.nav{
-			
+
 			padding-right: 10px;
 			@include mobile-all{
 				display: block;
@@ -533,7 +533,7 @@ aside{
 							@include border-radius(8px);
 							@include transition(all 0.3s ease-in-out);
 						}
-						
+
 					}
 				}
 			}
@@ -643,9 +643,9 @@ aside{
 			width: 21px;
 			height: 21px;
 			display: inline-block;
-			
+
 			color: $white-color;
-			@include border-radius(100%); 
+			@include border-radius(100%);
 			text-align: center;
 			line-height: 21px;
 			@include tablet{
@@ -711,7 +711,7 @@ aside{
 			height: 21px;
 			display: inline-block;
 			color: $white-color;
-			@include border-radius(100%); 
+			@include border-radius(100%);
 			text-align: center;
 			line-height: 21px;
 			@include tablet{
@@ -757,7 +757,7 @@ aside{
 			height: 21px;
 			display: inline-block;
 			color: $white-color;
-			@include border-radius(100%); 
+			@include border-radius(100%);
 			text-align: center;
 			line-height: 21px;
 			margin-right: 0;
@@ -845,7 +845,7 @@ aside{
 				font-size: 18px;
 				margin-right: 0;
 			}
-		} 
+		}
 	}
 	li:last-child{
 		border:none;

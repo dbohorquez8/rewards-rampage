@@ -25,7 +25,7 @@
     <%= render "reward_pages/tasks/new" %>
   </div>
 
-  <div class="colorSection full-width clearfix bg-color-4 servicesSection">
+  <div class="colorSection full-width clearfix bg-color-4 servicesSection js-rewards-container">
 
     <div class="container">
 
@@ -42,7 +42,6 @@
       <%= render "reward_pages/rewards/new" %>
 
     </div>
-
   </div>
 
   <div class="container padding-top">
@@ -60,3 +59,44 @@
     <%= render "reward_pages/participants/new" %>
   </div>
 </section>
+
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "https://widget.cloudinary.com/global/all.js" %>
+  <script>cloudinary.setCloudName('rewards');</script>
+  <script type="text/javascript">
+    var generateSignature = function(callback, params_to_sign){
+      $.ajax({
+        url     : '/gen_signature',
+        type    : "GET",
+        dataType: "text",
+        data    : { data: params_to_sign},
+        complete: function() {console.log("complete")},
+        success : function(signature, textStatus, xhr) { callback(signature); },
+        error   : function(xhr, status, error) { console.log(xhr, status, error); }
+      });
+    }
+  </script>
+  <script type="text/javascript">
+    $('.js-rewards-container').on('click', ".js-cloudinary-upload", function(evt){
+      evt.preventDefault();
+      cloudinary.openUploadWidget({
+        upload_preset: 'reward_photo',
+        api_key: '165732538419699',
+        multiple: false,
+        max_files: 1,
+        cropping: 'server',
+        theme: 'white',
+        button_class: 'btn-primary btn bg-color-5',
+        thumbnails: ".js-thumbnails"
+      }, function(error, result) {
+        if (error == null) {
+          if ($('.cloudinary-thumbnails').length > 1) {
+            $('.cloudinary-thumbnails:first').remove();
+          }
+          $('input[name="reward[photo]"]').val(result[0].secure_url);
+        }
+      });
+    });
+  </script>
+<% end %>
