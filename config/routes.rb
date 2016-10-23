@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :reward_pages, only: [:new]
   resources :reward_pages, except: [:new, :create, :index, :destroy], path: "s" do
     put 'change_email', to: 'reward_pages#change_email'
+    put 'change_name', to: 'reward_pages#change_name'
     resources :tasks, only: [:new, :create, :destroy], controller: "reward_pages/tasks" do
       resource :approvals, only: [:create, :destroy], controller: "reward_pages/approve_tasks"
     end
