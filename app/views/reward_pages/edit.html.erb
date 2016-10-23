@@ -1,6 +1,10 @@
 <section class="pageTitleSection">
   <div class="container pageTitleInfo">
-    <h2>Welcome to <%= current_reward_page.name %></h2>
+    <h2 class="pull-left">Welcome to <%= current_reward_page.name %></h2>
+    <%= link_to(reward_page_path(current_reward_page.identifier), class: "btn btn-primary pull-right") do %>
+      <i class="fa fa-eye"></i>
+      <span>Preview</span>
+    <% end %>
   </div>
 
   <% if current_reward_page.tasks.pending_approval.any? %>

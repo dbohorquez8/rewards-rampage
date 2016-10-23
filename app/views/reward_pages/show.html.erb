@@ -1,15 +1,25 @@
-<h1>SHOW <small><%= current_reward_page.name %></small> </h1>
+<section class="pageTitleSection">
+  <div class="container pageTitleInfo">
+    <h2 class="pull-left">Welcome to <%= current_reward_page.name %></h2>
+    <%= link_to(edit_reward_page_path(current_reward_page.identifier), class: "btn btn-primary pull-right") do %>
+      <i class="fa fa-pencil"></i>
+      <span>Edit</span>
+    <% end %>
+  </div>
 
-<%= link_to("Boton Edit", edit_reward_page_path(current_reward_page.identifier)) %>
+  <div class="container">
+    <h3 class="margin-bottom">Tasks</h3>
+    <% current_reward_page.tasks.each do |task| %>
+      <%= render "reward_pages/tasks/task", task: task, index: task.id%5 + 1 %>
+    <% end %>
+  </div>
 
-
-<h2>Tasks</h2>
-<% current_reward_page.tasks.each do |task| %>
-  <%= render "reward_pages/tasks/task", task: task, index: task.id%5 + 1 %>
-<% end %>
-
-<h2>Rewards</h2>
-
-<% current_reward_page.rewards.each do |reward| %>
-  <%= render "reward_pages/rewards/reward", reward: reward, index: reward.id%5 + 1 %>
-<% end %>
+  <div class="container padding-top">
+    <h3 class="margin-bottom">Rewards</h3>
+    <div class="row">
+      <% current_reward_page.rewards.each do |reward| %>
+        <%= render "reward_pages/rewards/reward", reward: reward, index: reward.id%5 + 1 %>
+      <% end %>
+    </div>
+  </div>
+</section>
