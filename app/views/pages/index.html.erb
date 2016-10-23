@@ -14,9 +14,9 @@
 
       <p class="text-center">
         <% if is_owner_or_participating? %>
-          <%= link_to("Create a reward", new_reward_page_path, class: "btn btn-primary") %>
-          or
-          <%= link_to("Go to your rewards", reward_pages_path, class: "btn btn-primary bg-color-2", data: {intro: "Hey, it seems you have open reward programs", position: "top"}) %>
+          <%= link_to("Create a reward", new_reward_page_path, class: "btn btn-primary margin-bottom") %>
+          <span class="margin-bottom">or</span>
+          <%= link_to("Go to your rewards", reward_pages_path, class: "btn btn-primary bg-color-2 margin-bottom", data: {intro: "Hey, it seems you have open reward programs", position: "top"}) %>
 
           <% content_for :javascript_includes do %>
             <script type="text/javascript">
