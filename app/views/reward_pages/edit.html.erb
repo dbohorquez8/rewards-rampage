@@ -55,13 +55,13 @@
           <div class="col-xs-4">
             <%= f.submit class: "btn btn-primary", value: "Save" %>
           </div>
-          
+
         <% end -%>
       </div>
     </div>
 
 
-    <%= link_to(reward_page_path(current_reward_page.identifier), class: "btn btn-primary pull-right") do %>
+    <%= link_to(reward_page_path(current_reward_page.identifier), class: "btn btn-primary pull-right", data: {intro: "Here you can preview your page", position: "left"}) do %>
       <i class="fa fa-eye"></i>
       <span>Preview</span>
     <% end %>

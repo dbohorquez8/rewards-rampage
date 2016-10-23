@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require chardinjs.min
 //= require bootstrap
 //= require theme/custom
