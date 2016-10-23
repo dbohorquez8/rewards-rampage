@@ -1,0 +1,47 @@
+<section class="pageTitleSection">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-6 col-xs-12">
+        <h3 class="margin-bottom">Rewards I've Created</h3>
+        <% owner_pages_from_cookies.each_with_index do |reward_page, index| %>
+          <div class="accordionCommon hello" id="faqAccordion">
+            <div class="panel-group" id="accordionFaq">
+              <div class="panel panel-default">
+                <%= link_to(reward_page_path(reward_page.identifier), class: "panel-heading bg-color-#{(index % 5) + 1}") do %>
+                  <span><%= reward_page.name %></span>
+                  <i class="fa fa-gear border-color-2 pull-right" aria-hidden="true"></i>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+        <% end -%>
+
+        <% if owner_pages_from_cookies.empty? %>
+          <h1>:(</h1>
+        <% end -%>
+      </div>
+
+      <div class="col-sm-6  col-xs-12">
+        <h3 class="margin-bottom">Rewards I am participating for</h3>
+        <% participant_pages_from_cookies.each_with_index do |participant, index| %>
+          <div class="accordionCommon hello" id="faqAccordion">
+            <div class="panel-group" id="accordionFaq">
+              <div class="panel panel-default">
+                <%= link_to(participant_path(participant.identifier), class: "panel-heading bg-color-#{5- (index % 5) + 1}") do %>
+                  <span><%= participant.name %></span>
+                  <i class="fa fa-eye border-color-2 pull-right" aria-hidden="true"></i>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+        <% end -%>
+
+        <% if participant_pages_from_cookies.empty? %>
+          <h1>:(</h1>
+        <% end -%>
+
+      </div>
+    </div>
+  </div>
+</section>

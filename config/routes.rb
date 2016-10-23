@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: "/sidekiq"
 
 
-  resources :reward_pages, only: [:new]
+  resources :reward_pages, only: [:new, :index]
   resources :reward_pages, except: [:new, :create, :index, :destroy], path: "s" do
     put 'change_email', to: 'reward_pages#change_email'
     put 'change_name', to: 'reward_pages#change_name'

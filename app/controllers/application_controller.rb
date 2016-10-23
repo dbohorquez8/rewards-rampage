@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def add_to_cookie(name, value)
+    if cookies[name].present?
+      current_data = JSON.parse(cookies[name])
+      current_data << value unless current_data.include?(value)
+      cookies[name] = current_data.to_json
+    else
+      cookies[name] = [value].to_json
+    end
+  end
+
   def show_404
     redirect_to no_way_baby_path
   end

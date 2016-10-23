@@ -2,6 +2,7 @@ class ParticipantsController < ApplicationController
   # renders the participant show page
   def show
     @reward_page = current_participant.reward_page
+    add_to_cookie(:participant, current_participant.identifier)
   end
 
   def change_email
