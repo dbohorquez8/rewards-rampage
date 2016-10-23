@@ -150,6 +150,8 @@
       $('.js-email-edit').on('click', ".js-edit-email-btn", function(){
         showTitleEdit('.js-email', '.js-edit-email-form');
       });
+
+      NotificationsHelper.init("<%= current_reward_page.identifier %>", (function(){ $('body').chardinJs('start') }).bind(this) );
     });
   </script>
 

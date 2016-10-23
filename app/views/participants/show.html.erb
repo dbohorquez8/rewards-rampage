@@ -43,14 +43,17 @@
 
   <div class="container pageTitleInfo margin-bottom">
     <h2 class="pull-left">Welcome, <%= current_participant.name %></h2>
-    <div class="pull-right sticker-box bg-color-5">
+    <div class="pull-right sticker-box bg-color-5" data-intro="Your accumulated number of points" data-position="left">
       <i class="fa fa-ticket"></i>
       <%= current_participant.points.to_i %> points
     </div>
   </div>
 
   <div class="container">
-    <h3 class="margin-bottom">Rewards</h3>
+    <h3 class="margin-bottom">
+      Rewards
+      <small style="visibility:hidden;" data-intro="The available rewards" data-position="right">oh, I am a hack!!! :D</small>
+    </h3>
     <div class="row">
       <% @reward_page.rewards.each_with_index do |reward, index| %>
         <%= render "participants/redeem_rewards/reward", reward: reward, index: index %>
@@ -59,11 +62,15 @@
 
     <hr>
 
-    <h3 class="margin-bottom">Tasks</h3>
-
-    <% @reward_page.tasks.each do |task| %>
-      <%= render "participants/complete_tasks/task", task: task %>
-    <% end %>
+    <h3 class="margin-bottom">
+      Tasks
+      <small style="visibility:hidden;" data-intro="The list of tasks that you can do" data-position="right">oh, I am a hack!!! :D</small>
+    </h3>
+    <div>
+      <% @reward_page.tasks.each do |task| %>
+        <%= render "participants/complete_tasks/task", task: task %>
+      <% end %>
+    </div>
   </div>
 </section>
 
@@ -79,6 +86,8 @@
       $('.js-email-edit').on('click', ".js-edit-email-btn", function(){
         showTitleEdit('.js-email', '.js-edit-email-form');
       });
+
+      NotificationsHelper.init("<%= current_participant.identifier %>", (function(){ $('body').chardinJs('start') }).bind(this) );
     });
   </script>
 <% end -%>
