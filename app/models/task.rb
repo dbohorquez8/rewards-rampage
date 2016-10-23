@@ -15,7 +15,7 @@ class Task < ApplicationRecord
 
   aasm column: 'status' do
     state :new_task, :initial => true
-    state :completed
+    state :completed, :after => :notify_owner_of_reward_page
     state :approved
 
     event :complete do
@@ -43,5 +43,12 @@ class Task < ApplicationRecord
       self.approve!
     end
     return true
+  end
+
+  private
+
+  # if the owner of this task has email, we will notify him
+  def notify_owner_of_reward_page
+    reward_page.notify_owner_of_task_completion!(self)
   end
 end
