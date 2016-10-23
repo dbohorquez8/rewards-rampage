@@ -1,25 +1,21 @@
 <% content_for :header_navigation_bar do %>
   <% unless current_participant.email.nil? %>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="color-1">
-          <div class="js-email-edit">
-            <div class="js-email">
-              <h6 class="pull-left">
-                <%= current_participant.email %>
-                <small class="js-edit-email-btn" style="cursor:pointer;"><i class="fa fa-pencil border-color-2" aria-hidden="true"></i></small>
-              </h6>
+      <div class="js-email-edit email-group">
+        <div class="js-email color-1 email-header">
+            <%= current_participant.email %>
+            <a href="javascript:(0);" class="js-edit-email-btn"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </div>
+        <div class="js-edit-email-form pull-left" style="display:none">
+          <%= form_for current_participant, url: participant_change_email_path(current_participant.identifier), method: :put do |f| %>
+            <div class="input-group">
+              <%= f.text_field :email, class: "form-control input-sm email-field", placeholder: "email here" %>
+              <%= f.button type: "submit", class: "btn btn-primary btn-xs pull-left email-button" do %>
+                <i class="fa fa-check"></i>
+              <% end %>
             </div>
-            <div class="js-edit-email-form pull-left" style="display:none">
-              <%= form_for current_participant, url: participant_change_email_path(current_participant.identifier), method: :put do |f| %>
-                <%= f.text_field :email, placeholder: "email here" %>
-                <%= f.submit class: "btn btn-primary", value: "Change Email" %>
-              <% end -%>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+          <% end -%>
+        </div>
+      </div>
   <% end -%>
 <% end -%>
 
@@ -55,7 +51,7 @@
       <small style="visibility:hidden;" data-intro="The available rewards" data-position="right">oh, I am a hack!!! :D</small>
     </h3>
     <div class="row">
-      <% @reward_page.rewards.each_with_index do |reward, index| %>
+      <% @reward_page.rewards.not_redeemed.each_with_index do |reward, index| %>
         <%= render "participants/redeem_rewards/reward", reward: reward, index: index %>
       <% end %>
     </div>
@@ -67,7 +63,7 @@
       <small style="visibility:hidden;" data-intro="The list of tasks that you can do" data-position="right">oh, I am a hack!!! :D</small>
     </h3>
     <div>
-      <% @reward_page.tasks.each do |task| %>
+      <% @reward_page.tasks.to_do.each do |task| %>
         <%= render "participants/complete_tasks/task", task: task %>
       <% end %>
     </div>
