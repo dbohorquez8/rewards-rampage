@@ -57,6 +57,10 @@ group :development do
   gem 'guard-rspec', require: false
 end
 
+group :production do
+  gem 'le'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haikunator'
