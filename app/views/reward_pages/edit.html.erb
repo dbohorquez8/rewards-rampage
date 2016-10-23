@@ -1,6 +1,45 @@
-<section class="pageTitleSection">
+<% content_for :header_navigation_bar do %>
+  <% unless current_reward_page.owner_email.nil? %>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="color-1">
+          <div class="js-email-edit">
+            <div class="js-email">
+              <h6 class="pull-left">
+                <%= current_reward_page.owner_email %>
+                <small class="js-edit-email-btn" style="cursor:pointer;"><i class="fa fa-pencil border-color-2" aria-hidden="true"></i></small>
+              </h6>
+            </div>
+            <div class="js-edit-email-form pull-left" style="display:none">
+              <%= form_for current_reward_page, url: reward_page_change_email_path(current_reward_page.identifier), method: :put do |f| %>
+                <%= f.text_field :owner_email, placeholder: "email here" %>
+                <%= f.submit class: "btn btn-primary", value: "Change Email" %>
+              <% end -%>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% end -%>
+<% end -%>
 
-  <div class="container margin-bottom pageTitleInfo">
+<section class="pageTitleSection">
+  <% if current_reward_page.owner_email.nil? %>
+    <div class="container js-email-notification">
+      <div class="alert alert-warning" role="alert">
+        <h5>
+          Please set your email, so you can receive notifications.
+        </h5>
+
+        <%= form_for :reward_page, url: reward_page_change_email_path(current_reward_page.identifier, format: :js), method: :put, remote: true do |f| %>
+          <%= f.text_field :owner_email, placeholder: "email here" %>
+          <%= f.submit class: "btn btn-primary", value: "Change Email" %>
+        <% end -%>
+      </div>
+    </div>
+  <% end -%>
+
+  <div class="container pageTitleInfo">
     <div class="js-reward-name-title">
       <div class="js-title">
         <h2 class="pull-left">
@@ -113,19 +152,18 @@
 
 <% content_for :javascript_includes do %>
   <script type="text/javascript">
-    function showTitleEdit(){
-      $('.js-title').hide();
-      $('.js-edit-title').show();
-    }
-
-    function hideTitleEdit(){
-      $('.js-title').show();
-      $('.js-edit-title').hide();
+    function showTitleEdit(hideSelector, showSelector){
+      $(hideSelector).hide();
+      $(showSelector).show();
     }
 
     $(document).ready(function(){
       $('.js-reward-name-title').on('click', ".js-edit-name-btn", function(){
-        showTitleEdit();
+        showTitleEdit('.js-title', '.js-edit-title');
+      });
+
+      $('.js-email-edit').on('click', ".js-edit-email-btn", function(){
+        showTitleEdit('.js-email', '.js-edit-email-form');
       });
     });
   </script>

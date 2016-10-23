@@ -11,6 +11,7 @@ class RewardPagesController < ApplicationController
   def change_email
     @reward = current_reward_page
     @reward.update_attributes(params.require(:reward_page).permit(:owner_email))
+    redirect_to(edit_reward_page_path(current_reward_page.identifier)) unless request.xhr?
   end
 
   def change_name

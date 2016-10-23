@@ -1,3 +1,29 @@
+<% content_for :header_navigation_bar do %>
+  <% unless current_participant.email.nil? %>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="color-1">
+          <div class="js-email-edit">
+            <div class="js-email">
+              <h6 class="pull-left">
+                <%= current_participant.email %>
+                <small class="js-edit-email-btn" style="cursor:pointer;"><i class="fa fa-pencil border-color-2" aria-hidden="true"></i></small>
+              </h6>
+            </div>
+            <div class="js-edit-email-form pull-left" style="display:none">
+              <%= form_for current_participant, url: participant_change_email_path(current_participant.identifier), method: :put do |f| %>
+                <%= f.text_field :email, placeholder: "email here" %>
+                <%= f.submit class: "btn btn-primary", value: "Change Email" %>
+              <% end -%>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% end -%>
+<% end -%>
+
+
 <section class="pageTitleSection">
 
   <% if current_participant.email.nil? %>
@@ -40,3 +66,19 @@
     <% end %>
   </div>
 </section>
+
+
+<% content_for :javascript_includes do %>
+  <script type="text/javascript">
+    function showTitleEdit(hideSelector, showSelector){
+      $(hideSelector).hide();
+      $(showSelector).show();
+    }
+
+    $(document).ready(function(){
+      $('.js-email-edit').on('click', ".js-edit-email-btn", function(){
+        showTitleEdit('.js-email', '.js-edit-email-form');
+      });
+    });
+  </script>
+<% end -%>
