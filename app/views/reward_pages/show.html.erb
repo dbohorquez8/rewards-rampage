@@ -5,11 +5,11 @@
 
 <h2>Tasks</h2>
 <% current_reward_page.tasks.each do |task| %>
-  <%= render "reward_pages/tasks/task", task: task%>
+  <%= render "reward_pages/tasks/task", task: task, index: task.id%5 + 1 %>
 <% end %>
 
 <h2>Rewards</h2>
 
 <% current_reward_page.rewards.each do |reward| %>
-  <%= render "reward_pages/rewards/reward", reward: reward%>
+  <%= render "reward_pages/rewards/reward", reward: reward, index: reward.id%5 + 1 %>
 <% end %>

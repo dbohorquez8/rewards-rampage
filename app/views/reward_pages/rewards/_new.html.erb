@@ -1,4 +1,14 @@
 <div class="js-reward-form">
+
+  <% if defined?(reward) %>
+    <% messages = reward.errors.full_messages -%>
+    <% if messages.any? %>
+      <p class="js-error-heading media-heading color-3">
+        <%= messages.join(', ') %>
+      </p>
+    <% end %>
+  <% end -%>
+
   <%= form_for :reward, url: reward_page_rewards_path(current_reward_page.identifier), remote: true do |f| %>
     <p class="h5">Add a Reward</p>
     <div class="row">
@@ -20,7 +30,8 @@
     <div class="row">
       <div class="form-group col-xs-12">
         <%= f.hidden_field :photo %>
-        <button id="upload_widget_opener"></button>
+        <a id="upload_widget_opener" class="btn-primary btn bg-color-5 js-cloudinary-upload">Upload a Photo</a>
+        <div class="js-thumbnails"></div>
       </div>
     </div>
 
@@ -28,39 +39,3 @@
     <%= f.submit class: "btn btn-primary pull-right", value: "Add Reward" %>
   <% end -%>
 </div>
-
-<% content_for :javascript_includes do %>
-  <%= javascript_include_tag "https://widget.cloudinary.com/global/all.js" %>
-  <script>cloudinary.setCloudName('rewards');</script>
-  <script type="text/javascript">
-    var generateSignature = function(callback, params_to_sign){
-      $.ajax({
-        url     : '/gen_signature',
-        type    : "GET",
-        dataType: "text",
-        data    : { data: params_to_sign},
-        complete: function() {console.log("complete")},
-        success : function(signature, textStatus, xhr) { callback(signature); },
-        error   : function(xhr, status, error) { console.log(xhr, status, error); }
-      });
-    }
-  </script>
-  <script type="text/javascript">  
-    $('#upload_widget_opener').cloudinary_upload_widget({
-      upload_preset: 'reward_photo',
-      api_key: '165732538419699',
-      multiple: false,
-      max_files: 1,
-      cropping: 'server',
-      theme: 'white',
-      button_class: 'btn-primary btn bg-color-5'
-    }, function(error, result) {
-      if (error == null) {
-        if ($('.cloudinary-thumbnails').length > 1) {
-          $('.cloudinary-thumbnails:last').remove();
-        }
-        $('input[name="reward[photo]"]').val(result[0].secure_url);
-      }
-    });
-  </script>
-<% end %>

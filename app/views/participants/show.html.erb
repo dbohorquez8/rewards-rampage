@@ -1,25 +1,22 @@
-<h1>Participant Show Page</h1>
+<section class="pageTitleSection">
+  <div class="container pageTitleInfo">
+    <h2>Welcome <%= current_participant.name %></h2>
+  </div>
 
-<h2>Participant</h2>
-<%= current_participant.name %>
+  <div class="container">
+    <h3 class="margin-bottom">Rewards</h3>
+    <div class="row">
+      <% @reward_page.rewards.each_with_index do |reward, index| %>
+        <%= render "participants/redeem_rewards/reward", reward: reward, index: index %>
+      <% end %>
+    </div>
+    
+    <hr>
 
-<br>
-<h2>reward page</h2>
+    <h3 class="margin-bottom">Tasks</h3>
 
-<h3>rewards</h3>
-<% @reward_page.rewards.each do |reward| %>
-  <%= render "participants/redeem_rewards/reward", reward: reward%>
-<% end %>
-
-
-
-<%= @reward_page.name %>
-
-<h3>Task</h3>
-
-<% @reward_page.tasks.each do |task| %>
-  <%= render "participants/complete_tasks/task", task: task%>
-<% end %>
-
-
-
+    <% @reward_page.tasks.each do |task| %>
+      <%= render "participants/complete_tasks/task", task: task %>
+    <% end %>
+  </div>
+</section>

@@ -23,3 +23,26 @@
   margin-left: 10px !important;
   height: 48px;
 }
+
+.btn-primary.btn-disabled {
+  background: #ddd !important;
+  cursor: default; 
+}
+
+.btn-clean {
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: transparent;
+  border: 0 none;
+  border-radius: 3px;
+  color: #b5d56a;
+
+  &:hover {
+    background: #f8f8f8;
+  }
+}
+
+.push-right {
+  margin-right: 10px;
+}

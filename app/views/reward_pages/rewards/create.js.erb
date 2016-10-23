@@ -1,10 +1,17 @@
 (function(){
   <% if @reward.persisted? %>
     var reward_html = $("<%= j(render('reward_pages/rewards/reward', reward: @reward, index: @reward.id%5 + 1)) %>");
-    $('.js-rewards-list').append(reward_html.hide());
-    reward_html.toggle( "highlight" );
+    $('.js-rewards-list').append(reward_html);
+
+    $('.js-reward-form .js-error-heading').remove();
     $('.js-reward-form form')[0].reset();
+    $('.js-reward-form').find('.js-thumbnails').html('');
+    $('.js-reward-form').find("textarea").val('');
+    $('.js-reward-form').find("input[type=text]").val('');
+    $('.js-reward-form').find("input#reward_photo[type=hidden]").val('');
   <% else %>
+    var new_form = $("<%= j(render('reward_pages/rewards/new', reward: @reward)) %>");
+    $('.js-reward-form').html(new_form.html());
     $('.js-reward-form').effect( 'shake' );
   <% end %>
 })();

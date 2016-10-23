@@ -1,4 +1,14 @@
-<div class="js-reward-form">
+<div class="js-participant-form">
+
+  <% if defined?(participant) %>
+    <% messages = participant.errors.full_messages -%>
+    <% if messages.any? %>
+      <p class="js-error-heading media-heading color-3">
+        <%= messages.join(', ') %>
+      </p>
+    <% end %>
+  <% end -%>
+
   <%= form_for :participant, url: reward_page_participants_path(current_reward_page.identifier), remote: true do |f| %>
     <p>Add a Participant</p>
     <div class="row">
