@@ -34,18 +34,18 @@
         </div>
         <div class="col-sm-4">
           <div class="sectionLink bg-color-2" id="teamLink">
-            <i class="fa fa-coffee linkIcon border-color-2" aria-hidden="true"></i>
-            <span class="linkText">Coworkers</span>
+            <i class="fa fa-soccer-ball-o linkIcon border-color-2" aria-hidden="true"></i>
+            <span class="linkText">Coaching</span>
             <ul>
-              <li>Get help with your tasks</li>
-              <li>Give rewards for their work</li>
+              <li>Challenge your team</li>
+              <li>Reward them for their achievements</li>
             </ul>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="sectionLink bg-color-3" id="galleryLink">
             <i class="fa fa-suitcase linkIcon border-color-3" aria-hidden="true"></i>
-            <span class="linkText">Employees</span>
+            <span class="linkText">Work</span>
             <ul>
               <li>Motivate your employees</li>
               <li>Create small hackatons</li>
@@ -67,44 +67,48 @@
       </h2>
     </div>
 
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="row">
 
-      <div class="media servicesContent">
-        <span class="media-left">
-          <i class="fa fa-tasks" aria-hidden="true"></i>
-        </span>
-        <div class="media-body">
-          <h3 class="media-heading">Post Your Tasks</h3>
-          <p>Create the list of tasks you want the participants to complete.<br>
-          Assign points to each task.<br>
-          Points will be awarded to the participant once they complete a task.</p>
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+        <div class="media servicesContent">
+          <span class="media-left">
+            <i class="fa fa-tasks" aria-hidden="true"></i>
+          </span>
+          <div class="media-body">
+            <h3 class="media-heading">Post Your Tasks</h3>
+            <p>Create the list of tasks you want the participants to complete.<br>
+            Assign points to each task.<br>
+            Points will be awarded to the participant once they complete a task.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="media servicesContent">
-        <span class="media-left">
-          <i class="fa fa-trophy" aria-hidden="true"></i>
-        </span>
-        <div class="media-body">
-          <h3 class="media-heading">Set up Your Rewards</h3>
-          <p>Add rewards that can be claimed by participants.<br>
-          Define the cost in points for each reward.</p>
+        <div class="media servicesContent">
+          <span class="media-left">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+          </span>
+          <div class="media-body">
+            <h3 class="media-heading">Set up Your Rewards</h3>
+            <p>Add rewards that can be claimed by participants.<br>
+            Define the cost in points for each reward.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="media servicesContent">
-        <span class="media-left">
-          <i class="fa fa-group" aria-hidden="true"></i>
-        </span>
-        <div class="media-body">
-          <h3 class="media-heading">Invite the Participants</h3>
-          <p>A unique link will be created for your task list.<br>
-          Share the link with the people you wish to participate.<br>
-          Wait for them to complete the tasks and claim their rewards.</p>
+        <div class="media servicesContent">
+          <span class="media-left">
+            <i class="fa fa-group" aria-hidden="true"></i>
+          </span>
+          <div class="media-body">
+            <h3 class="media-heading">Invite the Participants</h3>
+            <p>A unique link will be created for your task list.<br>
+            Share the link with the people you wish to participate.<br>
+            Wait for them to complete the tasks and claim their rewards.</p>
+          </div>
         </div>
       </div>
     </div>
-
-    
+    <p class="text-center">
+      <%= link_to("Get Started", new_reward_page_path, class: "btn btn-primary") %>
+    </p>
   </div>
 </section>
