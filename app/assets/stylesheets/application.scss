@@ -46,3 +46,22 @@
 .push-right {
   margin-right: 10px;
 }
+
+html, body {
+  height: 100%;
+}
+
+.footer {
+  height: 68px;
+}
+
+.main-wrapper {
+  min-height: 100%;
+  margin-bottom: -68px;
+}
+
+.main-wrapper:after {
+  content: "";
+  height: 68px;
+  display: block;
+}
