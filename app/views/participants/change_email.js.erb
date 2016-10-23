@@ -1,0 +1,7 @@
+(function(){
+  <% if @participant.email.present? && @participant.persisted? && @participant.valid? %>
+    $('.js-email-notification').fadeOut();
+  <% else %>
+    $('.js-email-notification').effect( 'shake' );
+  <% end %>
+})();
