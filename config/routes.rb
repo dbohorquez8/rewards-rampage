@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :participants, only: [:show], path: "p" do
+    put 'change_email', to: 'participants#change_email'
     resources :tasks, only: [] do
       resource :complete, only: [:create, :destroy], controller: "participants/complete_tasks"
     end
