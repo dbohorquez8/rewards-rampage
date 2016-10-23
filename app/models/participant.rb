@@ -46,4 +46,10 @@ class Participant < ApplicationRecord
   def notify_of_approved_task!(task)
     ParticipantMailer.points_awarded_to_you(self, task).deliver_later
   end
+
+  # this will send an email to the participant. It will be about how he now
+  # needs to review the task he completed.
+  def notify_of_rejected_task!(task)
+    ParticipantMailer.task_submission_rejected(self, task).deliver_later
+  end
 end

@@ -13,4 +13,11 @@ class ParticipantMailer < ApplicationMailer
     mail(:to => @participant.email,
       :subject => "You earned #{@task.points} points.")
   end
+
+  def task_submission_rejected(participant, task)
+    @participant = participant
+    @task        = task
+    mail(:to => @participant.email,
+      :subject => "[TASK REJECTED] :( please check the task '#{@task.name}'.")
+  end
 end

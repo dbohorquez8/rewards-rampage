@@ -15,10 +15,10 @@ class Task < ApplicationRecord
 
   aasm column: 'status' do
     state :new_task, :initial => true
-    state :completed, :after => :notify_owner_of_reward_page
-    state :approved, :after => :notify_participant_of_approved_task
+    state :completed
+    state :approved
 
-    event :complete do
+    event :complete, :after => :notify_owner_of_reward_page do
       transitions :from => [:new_task, :new], :to => :completed
     end
 
@@ -26,11 +26,11 @@ class Task < ApplicationRecord
       transitions :from => :completed, :to => :new_task
     end
 
-    event :approve do
+    event :approve, :after => :notify_participant_of_approved_task do
       transitions :from => :completed, :to => :approved
     end
 
-    event :reject do
+    event :reject, :after => :notify_participant_of_rejected_task do
       transitions :from => :completed, :to => :new_task
     end
   end
@@ -55,6 +55,12 @@ class Task < ApplicationRecord
   def notify_participant_of_approved_task
     Rails.logger.info("I will schedule the Email job notify_participant_of_approved_task")
     participant.notify_of_approved_task!(self) unless self.participant_id.nil?
+    return true
+  end
+
+  def notify_participant_of_rejected_task
+    Rails.logger.info("I will schedule the Email job notify_participant_of_approved_task")
+    participant.notify_of_rejected_task!(self) unless self.participant_id.nil?
     return true
   end
 end
