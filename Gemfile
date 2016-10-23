@@ -59,8 +59,6 @@ end
 
 group :production do
   gem 'le'
-  gem 'raygun4ruby'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -71,3 +69,4 @@ gem 'cloudinary'
 gem 'sendgrid-ruby'
 gem 'figaro'
 gem 'sidekiq'
+gem 'raygun4ruby'
