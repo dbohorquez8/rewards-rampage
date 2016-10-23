@@ -38,6 +38,57 @@ describe "methods" do
     end
   end
 
+  describe "complete_task!" do
+    before(:each) do
+      @reward_page = FactoryGirl.create(:reward_page)
+      @task = @reward_page.tasks.create(FactoryGirl.attributes_for(:task, points: "100"))
+      @participant = FactoryGirl.create(:participant, reward_page_id: @reward_page.id, points: 0)
+    end
+
+    it "should return truthy" do
+      expect(@participant.complete_task!(@task)).to be_truthy
+    end
+
+    it "should mark the task as completed" do
+      expect(@task.completed?).to be_falsey
+      @participant.complete_task!(@task)
+      expect(@task.reload.completed?).to be_truthy
+    end
+
+    it "should set the participant_id on the task" do
+      expect(@task.participant_id).to be_nil
+      @participant.complete_task!(@task)
+      expect(@task.reload.participant_id).not_to be_nil
+      expect(@task.reload.participant_id).to eq(@participant.id)
+    end
+  end
+
+  describe "undo_task!" do
+    before(:each) do
+      @reward_page = FactoryGirl.create(:reward_page)
+      @task = @reward_page.tasks.create(FactoryGirl.attributes_for(:task, points: "100"))
+      @participant = FactoryGirl.create(:participant, reward_page_id: @reward_page.id, points: 0)
+      @participant.complete_task!(@task)
+      @task.reload
+    end
+
+    it "should return truthy" do
+      expect(@participant.undo_task!(@task)).to be_truthy
+    end
+
+    it "should mark the task as new" do
+      expect(@task.new_task?).to be_falsey
+      @participant.undo_task!(@task)
+      expect(@task.reload.new_task?).to be_truthy
+    end
+
+    it "should set the participant_id on the task" do
+      expect(@task.participant_id).not_to be_nil
+      @participant.undo_task!(@task)
+      expect(@task.reload.participant_id).to be_nil
+    end
+  end
+
   describe "redeem_reward!" do
     before(:each) do
       @reward_page = FactoryGirl.create(:reward_page)

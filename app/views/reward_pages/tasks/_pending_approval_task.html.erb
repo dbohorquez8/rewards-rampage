@@ -1,0 +1,41 @@
+<div class="accordionCommon hello" id="faqAccordion" data-task-id="<%= task.id %>">
+  <div class="panel-group" id="accordionFaq">
+    <div class="panel panel-default">
+      <a class="panel-heading accordion-toggle bg-color-<%= (index % 5) + 1 %>" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-<%= task.id %>">
+        <span><%= task.title %></span>
+        <span class="iconBlock"><i class="fa fa-chevron-down"></i></span>
+        <span class="labelBlock"><%= task.points %> points</span>
+      </a>
+      <div id="collapse-<%= task.id %>" class="panel-collapse collapse out">
+        <div class="panel-body">
+          <p><%= task.description %></p>
+          <div class="col-md-7">
+            <div class="col-md-4">
+              <%= form_for(:task,
+                url: reward_page_task_approvals_path(
+                      reward_page_id: current_reward_page.identifier,
+                      task_id: task.id
+                    ),
+                remote: true
+                ) do |f| %>
+                  <%= f.submit("Approve", class: "btn btn-primary bg-color-2") %>
+              <% end -%>
+            </div>
+            <div class="col-md-3">
+              <%= form_for(:task,
+                url: reward_page_task_approvals_path(
+                      reward_page_id: current_reward_page.identifier,
+                      task_id: task.id
+                    ),
+                remote: true,
+                method: :delete
+                ) do |f| %>
+                  <%= f.submit("Reject", class: "btn btn-primary bg-color-3") %>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

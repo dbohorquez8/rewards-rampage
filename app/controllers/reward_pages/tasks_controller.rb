@@ -20,6 +20,6 @@ class RewardPages::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:description, :points)
+    params.require(:task).permit(:description, :points, :title)
   end
 end

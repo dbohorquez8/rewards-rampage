@@ -1,10 +1,13 @@
 (function(){
   <% if @task.persisted? %>
-    var reward_html = $("<%= j(render('reward_pages/tasks/task', task: @task)) %>");
-    $('.js-tasks-list').append(reward_html.hide());
-    reward_html.toggle( "highlight" );
+    var task_html = $("<%= j(render('reward_pages/tasks/task', task: @task, index: (@task.id % 5) +1 )) %>");
+    $('.js-tasks-list').append(task_html);
+
+    $('.js-task-form .js-error-heading').remove();
     $('.js-task-form form')[0].reset();
   <% else %>
+    var new_form = $("<%= j(render('reward_pages/tasks/new', task: @task)) %>");
+    $('.js-task-form').html(new_form.html());
     $('.js-task-form').effect( 'shake' );
   <% end %>
 })();
