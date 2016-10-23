@@ -20,7 +20,7 @@ RSpec.describe RewardPages::ApproveTasksController, type: :controller do
       }.to raise_error(ActiveRecord::RecordNotFound, /Couldn't find Task/)
     end
 
-    it "should mark the task a approved" do
+    it "should mark the task as approved" do
       @participant.complete_task!(@task)
       process :create, method: :post, params: {reward_page_id: @reward_page.identifier, task_id: @task.id}, format: :js
       expect(@task.reload.status).to eq('approved')

@@ -3,7 +3,7 @@
   <br>
   <%= task.points %> Points
 
-  <% if task.status == "new" %>
+  <% if task.status == "new_task" %>
     <%= form_for(:task,
       url: participant_task_complete_path(
             participant_id: current_participant.identifier,

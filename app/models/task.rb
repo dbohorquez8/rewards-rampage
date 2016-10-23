@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   validates :points, presence: true
 
   belongs_to :reward_page
+  belongs_to :participant, optional: true
 
   scope :pending_approval, -> { where("status = ?", 'completed') }
   scope :not_pending_approval, -> { where("status not in (?)", ['completed', 'approved']) }
@@ -32,5 +33,15 @@ class Task < ApplicationRecord
     event :reject do
       transitions :from => :completed, :to => :new_task
     end
+  end
+
+  # gives the participant his points
+  def award_points!
+    Task.transaction do
+      participant.points += self.points
+      participant.save
+      self.approve!
+    end
+    return true
   end
 end
