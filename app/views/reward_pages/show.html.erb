@@ -22,4 +22,13 @@
       <% end %>
     </div>
   </div>
+
+  <div class="container padding-top">
+    <h3 class="margin-bottom">Participants</h3>
+
+    <div class="row">
+      <% current_reward_page.participants.each_with_index do |participant, index| %>
+        <%= render "reward_pages/participants/participant", participant: participant, index: index %>
+      <% end %>
+    </div>
 </section>
