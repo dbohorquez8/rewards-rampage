@@ -24,21 +24,6 @@
 <% end -%>
 
 <section class="pageTitleSection">
-  <% if current_reward_page.owner_email.nil? %>
-    <div class="container js-email-notification">
-      <div class="alert alert-warning" role="alert">
-        <h5>
-          Please set your email, so you can receive notifications.
-        </h5>
-
-        <%= form_for :reward_page, url: reward_page_change_email_path(current_reward_page.identifier, format: :js), method: :put, remote: true do |f| %>
-          <%= f.text_field :owner_email, placeholder: "email here" %>
-          <%= f.submit class: "btn btn-primary", value: "Change Email" %>
-        <% end -%>
-      </div>
-    </div>
-  <% end -%>
-
   <div class="container pageTitleInfo">
     <div class="js-reward-name-title">
       <div class="js-title">

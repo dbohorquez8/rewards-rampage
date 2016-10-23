@@ -22,6 +22,7 @@ RSpec.describe Reward, type: :model do
 
   # Associations
   it { should belong_to(:reward_page) }
+  it { should belong_to(:participant) }
 
   it { should be_valid }
 end

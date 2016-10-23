@@ -1,0 +1,18 @@
+Congratulations!
+
+A participant redeemed a reward, this means you completed some tasks!
+
+Participant Information:
+Name: <%= @participant.name %>
+<% if @participant.email.present? %>
+  Email: <%= @participant.email %>
+<% end -%>
+
+Reward Information:
+Name: <%= @reward.try :name %>
+Points: <%= @reward.try :points %>
+
+Please make sure to send the reward!
+
+<%= render "owner_mailer/footer" %>
+<%= render "owner_mailer/greetings" %>

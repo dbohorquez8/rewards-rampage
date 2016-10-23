@@ -14,4 +14,13 @@ class OwnerMailer < ApplicationMailer
     mail(:to => @reward_page.owner_email,
       :subject => 'A completed task needs your approval.')
   end
+
+  def reward_redeemed(reward_page, reward, participant_id)
+    @reward_page = reward_page
+    @reward      = reward
+    @participant = reward_page.participants.find(participant_id)
+
+    mail(:to => @reward_page.owner_email,
+      :subject => "#{@participant.name} redeemed a reward!")
+  end
 end

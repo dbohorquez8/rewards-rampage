@@ -13,4 +13,10 @@ class RewardPage < ApplicationRecord
       OwnerMailer.task_completed(self, task).deliver_later
     end
   end
+
+  def notify_owner_of_redeemed_reward!(reward, participant_id)
+    if owner_email.present?
+      OwnerMailer.reward_redeemed(self, reward, participant_id).deliver_later
+    end
+  end
 end

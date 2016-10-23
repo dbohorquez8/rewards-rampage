@@ -4,9 +4,5 @@ A task has been completed.
 
 Tile: <%= @task.title %>
 
-You can approve it following your unique url.
-<%= reward_page_url(@reward_page.identifier) %>
-
-Have a great day,
-
-;)
+<%= render "owner_mailer/footer" %>
+<%= render "owner_mailer/greetings" %>
